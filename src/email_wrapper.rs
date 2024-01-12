@@ -35,34 +35,32 @@ impl EmailWrapper {
 	pub async fn send(
 		&self,
 		email: Email,
-	) -> EmailWrapperResult<EmailResponse> {
+	) -> EmailWrapperResult<Vec<ObjectId>> {
 		self.send_many(vec![email]).await
 	}
 
 	pub async fn send_many(
 		&self,
 		emails: Vec<Email>,
-	) -> EmailWrapperResult<EmailResponse> {
-		let mut map = HashMap::new();
-		map.insert("payload", emails);
-
-		let client = Client::new();
-		let response = client
+	) -> EmailWrapperResult<Vec<ObjectId>> {
+		let response = Client::new()
 			.post(format!("{}/v1/email", self.domain))
 			.header("Authorization", format!("Bearer {}", self.api_key))
-			.json(&map)
+			.json(&HashMap::from([("payload", emails)]))
 			.send()
 			.await
-			.unwrap();
+			.map_err(|_| Error::Unavailable)?;
 
 		match response.status() {
 			StatusCode::UNAUTHORIZED => Err(Error::Unauthorized),
 			_ => {
-				let response_text = response.text().await.unwrap();
-				let ret: EmailResponse =
-					serde_json::from_str(&response_text).unwrap();
+				let response_text =
+					response.text().await.map_err(|_| Error::Unknown)?;
 
-				Ok(ret)
+				let ret: EmailResponse = serde_json::from_str(&response_text)
+					.map_err(|_| Error::Unknown)?;
+
+				Ok(ret.emails)
 			}
 		}
 	}

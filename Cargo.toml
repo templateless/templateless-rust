@@ -12,6 +12,7 @@ tokio = { version = "1.35.1", features = ["full"] }
 http = "1.0.0"
 erased-serde = "0.4.2"
 dotenvy = "0.15.7"
+exitcode = "1.1.2"
 
 [[example]]
 name = "simple"

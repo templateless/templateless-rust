@@ -2,50 +2,17 @@ use serde::Serialize;
 
 use crate::{
 	components::{Button, Component, Image, Link, List, Otp, Socials, Text},
-	Footer, Header, ListStyle, SocialItem,
+	ListStyle, SocialItem,
 };
 
 #[derive(Clone, Serialize)]
-pub enum Theme {
-	#[serde(rename = "unstyled")]
-	Unstyled,
-	#[serde(rename = "simple")]
-	Simple,
+pub struct Collection {
+	pub components: Vec<Box<dyn Component>>,
 }
 
-#[derive(Clone, Serialize)]
-pub struct Template {
-	version: u8,
-	theme: Theme,
-	header: Vec<Box<dyn Component>>,
-	body: Vec<Vec<Box<dyn Component>>>,
-	footer: Vec<Box<dyn Component>>,
-}
-
-impl Template {
+impl Collection {
 	pub fn builder() -> Self {
-		Self {
-			version: 1,
-			theme: Theme::Unstyled,
-			header: vec![],
-			body: vec![vec![]],
-			footer: vec![],
-		}
-	}
-
-	pub fn theme(mut self, theme: Theme) -> Self {
-		self.theme = theme;
-		self
-	}
-
-	pub fn header(mut self, header: Header) -> Self {
-		self.header = header.components;
-		self
-	}
-
-	pub fn footer(mut self, footer: Footer) -> Self {
-		self.footer = footer.components;
-		self
+		Self { components: vec![] }
 	}
 
 	pub fn button(self, text: &str, url: &str) -> Self {
@@ -94,7 +61,7 @@ impl Template {
 	}
 
 	fn push(mut self, component: Box<dyn Component>) -> Self {
-		self.body[0].push(component);
+		self.components.push(component);
 		self
 	}
 }
