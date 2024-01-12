@@ -1,5 +1,8 @@
 use dotenvy::dotenv;
-use reqwest::{Client, StatusCode};
+use reqwest::{
+	header::{AUTHORIZATION, REFERER},
+	Client, StatusCode,
+};
 use serde::Deserialize;
 use std::collections::HashMap;
 
@@ -45,7 +48,15 @@ impl EmailWrapper {
 	) -> EmailWrapperResult<Vec<ObjectId>> {
 		let response = Client::new()
 			.post(format!("{}/v1/email", self.domain))
-			.header("Authorization", format!("Bearer {}", self.api_key))
+			.header(AUTHORIZATION, format!("Bearer {}", self.api_key))
+			.header(
+				REFERER,
+				format!(
+					"{} v{}",
+					env!("CARGO_PKG_NAME"),
+					env!("CARGO_PKG_VERSION")
+				),
+			)
 			.json(&HashMap::from([("payload", emails)]))
 			.send()
 			.await
