@@ -16,7 +16,7 @@ mod otp;
 mod socials;
 mod text;
 
-pub trait Component: ComponentClone + erased_serde::Serialize {}
+pub trait Component: ComponentClone + erased_serde::Serialize + Send {}
 
 pub trait ComponentClone {
 	fn clone_box(&self) -> Box<dyn Component>;

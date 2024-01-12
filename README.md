@@ -26,7 +26,7 @@ async fn main() -> Result<(), emailwrapper::Error> {
         .subject("Hello")
         .template(template);
 
-    let emailwrapper = EmailWrapper::new("<API_KEY>");
+    let emailwrapper = EmailWrapper::new("<YOUR_API_KEY>");
     let _result = emailwrapper.send(email).await?;
 
     Ok(())
