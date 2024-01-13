@@ -93,6 +93,10 @@ impl Template {
 		self.push(Box::new(Text::new(text)))
 	}
 
+	pub fn build(self) -> Self {
+		self
+	}
+
 	fn push(mut self, component: Box<dyn Component>) -> Self {
 		self.body[0].push(component);
 		self

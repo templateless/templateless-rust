@@ -60,6 +60,10 @@ impl Collection {
 		self.push(Box::new(Text::new(text)))
 	}
 
+	pub fn build(self) -> Self {
+		self
+	}
+
 	fn push(mut self, component: Box<dyn Component>) -> Self {
 		self.components.push(component);
 		self

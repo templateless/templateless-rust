@@ -5,7 +5,7 @@ async fn main() -> Result<(), emailwrapper::Error> {
 	let api_key = utils::get_env("EMAILWRAPPER_API_KEY");
 	let email_address = utils::get_env("EMAILWRAPPER_EMAIL_ADDRESS");
 
-	let template = Template::builder().text("Hello world");
+	let template = Template::builder().text("Hello world").build();
 
 	let email = Email::builder()
 		.to(EmailAddress::new(&email_address))
