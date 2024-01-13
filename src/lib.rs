@@ -4,7 +4,7 @@ pub use email::Email;
 pub use email_address::EmailAddress;
 pub use email_wrapper::EmailWrapper;
 pub use errors::EmailWrapperError;
-pub use template::Template;
+pub use template::{Template, Theme};
 
 static EMAILWRAPPER_DOMAIN: &str = "https://emailwrapper.com";
 
