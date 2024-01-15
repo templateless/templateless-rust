@@ -6,11 +6,22 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v3
+      - name: Free disk space
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          df -h
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: nightly
           override: true
           components: rustfmt, clippy
       - name: Set up cargo cache
@@ -27,7 +38,7 @@ jobs:
           restore-keys: ${{ runner.os }}-cargo-
       - name: Lint
         run: |
-          rustfmt **/*.rs
+          rustfmt +nightly **/*.rs
           cargo clippy --all
       - name: Install cargo check tools
         run: |
@@ -36,11 +47,5 @@ jobs:
         run: |
           cargo deny check
           rm -rf ~/.cargo/advisory-db
-      - name: Free
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /usr/local/share/boost
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - name: Test
         run: cargo test --all

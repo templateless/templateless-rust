@@ -25,7 +25,7 @@ pub struct Template {
 impl Template {
 	pub fn builder() -> Self {
 		Self {
-			version: 1,
+			version: 0,
 			theme: Theme::Unstyled,
 			header: vec![],
 			body: vec![vec![]],
