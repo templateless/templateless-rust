@@ -24,6 +24,14 @@ impl Email {
 		self
 	}
 
+	pub fn to_many(&mut self, email_addresses: Vec<EmailAddress>) -> &mut Self {
+		for email_address in email_addresses.into_iter() {
+			self.to.insert(email_address);
+		}
+
+		self
+	}
+
 	pub fn subject(&mut self, subject: &str) -> &mut Self {
 		self.subject = subject.to_string();
 		self
