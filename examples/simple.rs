@@ -1,20 +1,20 @@
-use emailwrapper::{utils, Email, EmailAddress, EmailWrapper, Template};
+use templateless::{utils, Content, Email, EmailAddress, Templateless};
 
 #[tokio::main]
-async fn main() -> Result<(), emailwrapper::Error> {
-	let api_key = utils::get_env("EMAILWRAPPER_API_KEY");
-	let email_address = utils::get_env("EMAILWRAPPER_EMAIL_ADDRESS");
+async fn main() -> Result<(), templateless::Error> {
+	let api_key = utils::get_env("TEMPLATELESS_API_KEY");
+	let email_address = utils::get_env("TEMPLATELESS_EMAIL_ADDRESS");
 
-	let template = Template::builder().text("Hello world").build();
+	let content = Content::builder().text("Hello world").build();
 
 	let email = Email::builder()
 		.to(EmailAddress::new(&email_address))
 		.subject("Hello")
-		.template(template)
+		.content(content)
 		.build();
 
-	let emailwrapper = EmailWrapper::new(&api_key);
-	let result = emailwrapper.send(email).await?;
+	let templateless = Templateless::new(&api_key);
+	let result = templateless.send(email).await?;
 
 	println!("{:?}", result);
 	Ok(())

@@ -1,34 +1,35 @@
-# [EmailWrapper](https://emailwrapper.com) Rust
+# [Templateless](https://templateless.com) Rust
 
-[![Github Actions](https://img.shields.io/github/actions/workflow/status/emailwrapper/emailwrapper-rust/tests.yml?style=flat-square)](https://github.com/emailwrapper/emailwrapper-rust/actions)
-[![License](https://img.shields.io/github/license/emailwrapper/emailwrapper-rust?color=green&style=flat-square)](/LICENSE)
+[![Github Actions](https://img.shields.io/github/actions/workflow/status/templateless/templateless-rust/tests.yml?style=flat-square)](https://github.com/templateless/templateless-rust/actions)
+[![License](https://img.shields.io/github/license/templateless/templateless-rust?color=green&style=flat-square)](/LICENSE)
 
 ## What is this?
 
-[EmailWrapper](https://emailwrapper.com) lets you quickly create and send emails with your favorite email provider without ever leaving your code editor.
+[Templateless](https://templateless.com) lets you quickly create and send emails with your favorite email provider without ever leaving your code editor.
 
 Don't waste time messing around with HTML or HTML builders.
 
-**Get your free API key [here](https://emailwrapper.com).**
+**Get your free API key [here](https://templateless.com).**
 
 ## Quick Example
 
 ```rust
-use emailwrapper::{Email, EmailAddress, EmailWrapper, Template};
+use templateless::{Templateless, Email, EmailAddress, Content, Error};
 
 #[tokio::main]
-async fn main() -> Result<(), emailwrapper::Error> {
-    let template = Template::builder()
+async fn main() -> Result<(), Error> {
+    let content = Content::builder()
         .text("Hello world");
 
     let email = Email::builder()
         .to(EmailAddress::new("user@example.com"))
-        .subject("Hello")
-        .template(template)
+        .subject("Hello 👋")
+        .content(content)
         .build();
 
-    let emailwrapper = EmailWrapper::new("<YOUR_API_KEY>");
-    let _result = emailwrapper.send(email).await?;
+    let _result = Templateless::new("<YOUR_API_KEY>")
+        .send(email)
+        .await?;
 
     Ok(())
 }
@@ -39,16 +40,16 @@ async fn main() -> Result<(), emailwrapper::Error> {
 1. Test a very simple email:
 
     ```shell
-    EMAILWRAPPER_API_KEY=<YOUR_API_KEY> \
-      EMAILWRAPPER_EMAIL_ADDRESS=<YOUR_EMAIL_ADDRESS> \
+    TEMPLATELESS_API_KEY=<YOUR_API_KEY> \
+      TEMPLATELESS_EMAIL_ADDRESS=<YOUR_EMAIL_ADDRESS> \
       cargo run --example simple
     ```
 
 1. Sample "confirm email" when user signs up:
 
     ```shell
-    EMAILWRAPPER_API_KEY=<YOUR_API_KEY> \
-      EMAILWRAPPER_EMAIL_ADDRESS=<YOUR_EMAIL_ADDRESS> \
+    TEMPLATELESS_API_KEY=<YOUR_API_KEY> \
+      TEMPLATELESS_EMAIL_ADDRESS=<YOUR_EMAIL_ADDRESS> \
       cargo run --example confirm-email
     ```
 

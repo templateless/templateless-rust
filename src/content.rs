@@ -14,7 +14,7 @@ pub enum Theme {
 }
 
 #[derive(Clone, Serialize)]
-pub struct Template {
+pub struct Content {
 	version: u8,
 	theme: Theme,
 	header: Vec<Box<dyn Component>>,
@@ -22,7 +22,7 @@ pub struct Template {
 	footer: Vec<Box<dyn Component>>,
 }
 
-impl Template {
+impl Content {
 	pub fn builder() -> Self {
 		Self {
 			version: 0,

@@ -6,25 +6,25 @@ use reqwest::{
 use serde::Deserialize;
 use std::collections::HashMap;
 
-use crate::{Email, EmailWrapperResult, Error, ObjectId, EMAILWRAPPER_DOMAIN};
+use crate::{Email, Error, ObjectId, TemplatelessResult, TEMPLATELESS_DOMAIN};
 
 #[derive(Debug, Deserialize)]
 pub struct EmailResponse {
 	pub emails: Vec<ObjectId>,
 }
 
-pub struct EmailWrapper {
+pub struct Templateless {
 	api_key: String,
 	domain: String,
 }
 
-impl EmailWrapper {
+impl Templateless {
 	pub fn new(api_key: &str) -> Self {
 		dotenv().ok();
 
-		let domain = match dotenvy::var("EMAILWRAPPER_DOMAIN") {
+		let domain = match dotenvy::var("TEMPLATELESS_DOMAIN") {
 			Ok(domain) if !domain.is_empty() => domain,
-			_ => EMAILWRAPPER_DOMAIN.to_string(),
+			_ => TEMPLATELESS_DOMAIN.to_string(),
 		};
 
 		Self { api_key: api_key.to_string(), domain }
@@ -38,14 +38,14 @@ impl EmailWrapper {
 	pub async fn send(
 		&self,
 		email: Email,
-	) -> EmailWrapperResult<Vec<ObjectId>> {
+	) -> TemplatelessResult<Vec<ObjectId>> {
 		self.send_many(vec![email]).await
 	}
 
 	pub async fn send_many(
 		&self,
 		emails: Vec<Email>,
-	) -> EmailWrapperResult<Vec<ObjectId>> {
+	) -> TemplatelessResult<Vec<ObjectId>> {
 		let response = Client::new()
 			.post(format!("{}/v1/email", self.domain))
 			.header(AUTHORIZATION, format!("Bearer {}", self.api_key))

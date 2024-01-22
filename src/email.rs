@@ -1,13 +1,13 @@
 use serde::Serialize;
 use std::collections::HashSet;
 
-use crate::{EmailAddress, Template};
+use crate::{Content, EmailAddress};
 
 #[derive(Clone, Serialize)]
 pub struct Email {
 	to: HashSet<EmailAddress>,
 	subject: String,
-	template: Template,
+	content: Content,
 }
 
 impl Email {
@@ -15,7 +15,7 @@ impl Email {
 		Self {
 			to: HashSet::new(),
 			subject: "".to_string(),
-			template: Template::builder(),
+			content: Content::builder(),
 		}
 	}
 
@@ -37,8 +37,8 @@ impl Email {
 		self
 	}
 
-	pub fn template(&mut self, template: Template) -> &mut Self {
-		self.template = template;
+	pub fn content(&mut self, content: Content) -> &mut Self {
+		self.content = content;
 		self
 	}
 

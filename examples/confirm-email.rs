@@ -1,12 +1,12 @@
-use emailwrapper::{
-	utils, Email, EmailAddress, EmailWrapper, Footer, Header, Service,
-	SocialItem, Template,
+use templateless::{
+	utils, Content, Email, EmailAddress, Footer, Header, Service, SocialItem,
+	Templateless,
 };
 
 #[tokio::main]
-async fn main() -> Result<(), emailwrapper::Error> {
-	let api_key = utils::get_env("EMAILWRAPPER_API_KEY");
-	let email_address = utils::get_env("EMAILWRAPPER_EMAIL_ADDRESS");
+async fn main() -> Result<(), templateless::Error> {
+	let api_key = utils::get_env("TEMPLATELESS_API_KEY");
+	let email_address = utils::get_env("TEMPLATELESS_EMAIL_ADDRESS");
 
 	let header = Header::builder().text("# ExampleApp").build();
 
@@ -18,7 +18,7 @@ async fn main() -> Result<(), emailwrapper::Error> {
 		.link("Unsubscribe", "https://example.com/unsubscribe?id=123")
 		.build();
 
-	let template = Template::builder()
+	let content = Content::builder()
 		.header(header)
 		.text("Hello world")
 		.footer(footer)
@@ -27,11 +27,11 @@ async fn main() -> Result<(), emailwrapper::Error> {
 	let email = Email::builder()
 		.to(EmailAddress::new(&email_address))
 		.subject("Confirm your email")
-		.template(template)
+		.content(content)
 		.build();
 
-	let emailwrapper = EmailWrapper::new(&api_key);
-	let result = emailwrapper.send(email).await?;
+	let templateless = Templateless::new(&api_key);
+	let result = templateless.send(email).await?;
 
 	println!("{:?}", result);
 	Ok(())
