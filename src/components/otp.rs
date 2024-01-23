@@ -1,15 +1,16 @@
-use crate::components::Component;
 use serde::Serialize;
+
+use crate::components::{Component, ComponentId};
 
 #[derive(Clone, Serialize)]
 pub struct Otp {
-	id: String,
+	id: ComponentId,
 	text: String,
 }
 
 impl Otp {
 	pub fn new(text: &str) -> Self {
-		Self { id: "otp".to_string(), text: text.to_string() }
+		Self { id: ComponentId::Otp, text: text.to_string() }
 	}
 }
 

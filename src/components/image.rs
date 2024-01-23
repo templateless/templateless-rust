@@ -1,9 +1,10 @@
-use crate::components::Component;
 use serde::Serialize;
+
+use crate::components::{Component, ComponentId};
 
 #[derive(Clone, Serialize)]
 pub struct Image {
-	id: String,
+	id: ComponentId,
 	src: String,
 	alt: String,
 	width: usize,
@@ -20,7 +21,7 @@ impl Image {
 		url: String,
 	) -> Self {
 		Self {
-			id: "image".to_string(),
+			id: ComponentId::Image,
 			src: src.to_string(),
 			alt: alt.to_string(),
 			width,

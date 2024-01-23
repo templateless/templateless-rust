@@ -1,9 +1,10 @@
-use crate::components::Component;
 use serde::Serialize;
+
+use crate::components::{Component, ComponentId};
 
 #[derive(Clone, Serialize)]
 pub struct Link {
-	id: String,
+	id: ComponentId,
 	text: String,
 	url: String,
 }
@@ -11,7 +12,7 @@ pub struct Link {
 impl Link {
 	pub fn new(text: &str, url: &str) -> Self {
 		Self {
-			id: "link".to_string(),
+			id: ComponentId::Link,
 			text: text.to_string(),
 			url: url.to_string(),
 		}

@@ -1,8 +1,10 @@
 use serde::Serialize;
 
 use crate::{
-	components::{Button, Component, Image, Link, List, Otp, Socials, Text},
-	Footer, Header, ListStyle, SocialItem,
+	components::{
+		Button, Component, Image, Link, Otp, Socials, Text, ViewInBrowser,
+	},
+	Footer, Header, SocialItem,
 };
 
 #[derive(Clone, Serialize)]
@@ -73,14 +75,6 @@ impl Content {
 		self.push(Box::new(Link::new(text, url)))
 	}
 
-	pub fn list(
-		self,
-		style: ListStyle,
-		items: Vec<Box<dyn Component>>,
-	) -> Self {
-		self.push(Box::new(List::new(style, items)))
-	}
-
 	pub fn otp(self, text: &str) -> Self {
 		self.push(Box::new(Otp::new(text)))
 	}
@@ -91,6 +85,10 @@ impl Content {
 
 	pub fn text(self, text: &str) -> Self {
 		self.push(Box::new(Text::new(text)))
+	}
+
+	pub fn view_in_browser(self, text: &str) -> Self {
+		self.push(Box::new(ViewInBrowser::new(text)))
 	}
 
 	pub fn build(self) -> Self {

@@ -1,20 +1,37 @@
 use erased_serde::serialize_trait_object;
+use serde::Serialize;
 
 pub use button::Button;
 pub use image::Image;
 pub use link::Link;
-pub use list::{List, Style as ListStyle};
 pub use otp::Otp;
 pub use socials::{Item as SocialItem, Service, Socials};
 pub use text::Text;
+pub use view_in_browser::ViewInBrowser;
 
 mod button;
 mod image;
 mod link;
-mod list;
 mod otp;
 mod socials;
 mod text;
+mod view_in_browser;
+
+#[derive(
+	Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, Serialize,
+)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum ComponentId {
+	Button,
+	Image,
+	Link,
+	List,
+	Otp,
+	PoweredBy,
+	Socials,
+	Text,
+	ViewInBrowser,
+}
 
 pub trait Component: ComponentClone + erased_serde::Serialize + Send {}
 

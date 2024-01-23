@@ -1,34 +1,15 @@
-use crate::components::Component;
 use serde::Serialize;
 
+use crate::components::{Component, ComponentId};
+
 #[derive(Clone, Debug, Serialize, Eq, PartialEq, Hash)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Service {
-	#[serde(rename = "website")]
 	Website,
-	#[serde(rename = "email")]
 	Email,
-	#[serde(rename = "facebook")]
-	Facebook,
-	#[serde(rename = "youtube")]
-	YouTube,
-	#[serde(rename = "twitter")]
 	Twitter,
-	#[serde(rename = "x")]
 	X,
-	#[serde(rename = "github")]
 	Github,
-	#[serde(rename = "instagram")]
-	Instagram,
-	#[serde(rename = "linkedin")]
-	LinkedIn,
-	#[serde(rename = "slack")]
-	Slack,
-	#[serde(rename = "discord")]
-	Discord,
-	#[serde(rename = "tiktok")]
-	TikTok,
-	#[serde(rename = "snapchat")]
-	Snapchat,
 }
 
 #[derive(Debug, Serialize, Clone, Hash, PartialEq, Eq)]
@@ -45,13 +26,13 @@ impl Item {
 
 #[derive(Clone, Serialize)]
 pub struct Socials {
-	id: String,
+	id: ComponentId,
 	data: Vec<Item>,
 }
 
 impl Socials {
 	pub fn new(data: Vec<Item>) -> Self {
-		Self { id: "socials".to_string(), data }
+		Self { id: ComponentId::Socials, data }
 	}
 }
 

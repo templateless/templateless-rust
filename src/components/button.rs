@@ -1,9 +1,10 @@
-use crate::components::Component;
 use serde::Serialize;
+
+use crate::components::{Component, ComponentId};
 
 #[derive(Clone, Serialize)]
 pub struct Button {
-	id: String,
+	id: ComponentId,
 	text: String,
 	url: String,
 }
@@ -11,7 +12,7 @@ pub struct Button {
 impl Button {
 	pub fn new(text: &str, url: &str) -> Self {
 		Self {
-			id: "button".to_string(),
+			id: ComponentId::Button,
 			text: text.to_string(),
 			url: url.to_string(),
 		}
