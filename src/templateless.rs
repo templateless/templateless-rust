@@ -6,7 +6,10 @@ use reqwest::{
 use serde::Deserialize;
 use std::collections::HashMap;
 
-use crate::{Email, Error, ObjectId, TemplatelessResult, TEMPLATELESS_DOMAIN};
+use crate::{
+	errors::BadRequestCode, Email, Error, ObjectId, TemplatelessResult,
+	TEMPLATELESS_DOMAIN,
+};
 
 #[derive(Debug, Deserialize)]
 pub struct EmailResponse {
@@ -52,7 +55,7 @@ impl Templateless {
 			.header(
 				REFERER,
 				format!(
-					"{} v{}",
+					"{}-rust v{}",
 					env!("CARGO_PKG_NAME"),
 					env!("CARGO_PKG_VERSION")
 				),
@@ -64,7 +67,39 @@ impl Templateless {
 
 		match response.status() {
 			StatusCode::UNAUTHORIZED => Err(Error::Unauthorized),
-			_ => {
+			StatusCode::FORBIDDEN => Err(Error::Forbidden),
+			StatusCode::UNPROCESSABLE_ENTITY => Err({
+				let response_text =
+					response.text().await.map_err(|_| Error::Unknown)?;
+
+				#[derive(Deserialize)]
+				struct InvalidParameter {
+					field: String,
+				}
+
+				let ret: InvalidParameter =
+					serde_json::from_str(&response_text)
+						.map_err(|_| Error::Unknown)?;
+
+				Error::InvalidParameter { field: ret.field }
+			}),
+			StatusCode::BAD_REQUEST => Err({
+				let response_text =
+					response.text().await.map_err(|_| Error::Unknown)?;
+
+				#[derive(Deserialize)]
+				struct BadRequest {
+					code: BadRequestCode,
+					error: String,
+				}
+
+				let ret: BadRequest = serde_json::from_str(&response_text)
+					.map_err(|_| Error::Unknown)?;
+
+				Error::BadRequest { code: ret.code, error: ret.error }
+			}),
+			StatusCode::INTERNAL_SERVER_ERROR => Err(Error::Unavailable),
+			StatusCode::OK => {
 				let response_text =
 					response.text().await.map_err(|_| Error::Unknown)?;
 
@@ -73,6 +108,7 @@ impl Templateless {
 
 				Ok(ret.emails)
 			}
+			_ => Err(Error::Unknown),
 		}
 	}
 }

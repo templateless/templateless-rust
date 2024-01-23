@@ -4,10 +4,19 @@ use std::collections::HashSet;
 use crate::{Content, EmailAddress};
 
 #[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct EmailOptions {
+	#[serde(skip_serializing_if = "Option::is_none")]
+	delete_after: Option<u64>,
+}
+
+#[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Email {
 	to: HashSet<EmailAddress>,
 	subject: String,
 	content: Content,
+	options: EmailOptions,
 }
 
 impl Email {
@@ -16,6 +25,7 @@ impl Email {
 			to: HashSet::new(),
 			subject: "".to_string(),
 			content: Content::builder(),
+			options: EmailOptions { delete_after: None },
 		}
 	}
 
@@ -39,6 +49,11 @@ impl Email {
 
 	pub fn content(&mut self, content: Content) -> &mut Self {
 		self.content = content;
+		self
+	}
+
+	pub fn delete_after(&mut self, seconds: u64) -> &mut Self {
+		self.options.delete_after = Some(seconds);
 		self
 	}
 
