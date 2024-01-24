@@ -1,7 +1,14 @@
 [package]
 name = "templateless"
+description = "Ship faster by sending elegant emails using just code"
+repository = "https://github.com/templateless/templateless-rust"
+documentation = "https://docs.rs/templateless"
+homepage = "https://templateless.com/"
 version = "0.1.0-alpha.1"
+license = "MIT"
 edition = "2021"
+readme = "README.md"
+keywords = ["email", "templates"]
 
 [dependencies]
 serde = { version = "1.0.195", features = ["derive"] }
