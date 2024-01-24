@@ -14,7 +14,7 @@ Don't waste time messing around with HTML or HTML builders.
 ## Quick Example
 
 ```rust
-use templateless::{Templateless, Email, EmailAddress, Content, Error};
+use templateless::{Content, Email, EmailAddress, Templateless, Error};
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
