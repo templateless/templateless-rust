@@ -3,13 +3,10 @@ pub use components::{Service, SocialItem};
 pub use content::{Content, Theme};
 pub use email::Email;
 pub use email_address::EmailAddress;
-pub use errors::TemplatelessError;
+pub use errors::{Error, Result};
 pub use templateless::Templateless;
 
 static TEMPLATELESS_DOMAIN: &str = "https://templateless.com";
-
-pub type Error = TemplatelessError;
-pub type TemplatelessResult<T> = Result<T, Error>;
 
 pub type ObjectId = String;
 

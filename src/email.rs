@@ -1,7 +1,7 @@
 use serde::Serialize;
 use std::collections::HashSet;
 
-use crate::{Content, EmailAddress};
+use crate::{Content, EmailAddress, Result};
 
 #[derive(Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -57,7 +57,7 @@ impl Email {
 		self
 	}
 
-	pub fn build(&self) -> Self {
-		self.clone()
+	pub fn build(&self) -> Result<Self> {
+		Ok(self.clone())
 	}
 }

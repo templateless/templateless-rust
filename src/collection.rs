@@ -4,7 +4,7 @@ use crate::{
 	components::{
 		Button, Component, Image, Link, Otp, Socials, Text, ViewInBrowser,
 	},
-	SocialItem,
+	Result, SocialItem,
 };
 
 #[derive(Clone, Serialize)]
@@ -58,8 +58,8 @@ impl Collection {
 		self.push(Box::new(ViewInBrowser::new(text)))
 	}
 
-	pub fn build(self) -> Self {
-		self
+	pub fn build(&self) -> Result<Self> {
+		Ok(self.clone())
 	}
 
 	fn push(mut self, component: Box<dyn Component>) -> Self {

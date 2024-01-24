@@ -14,18 +14,19 @@ Don't waste time messing around with HTML or HTML builders.
 ## Quick Example
 
 ```rust
-use templateless::{Content, Email, EmailAddress, Templateless, Error};
+use templateless::{Content, Email, EmailAddress, Templateless, Result};
 
 #[tokio::main]
-async fn main() -> Result<(), Error> {
+async fn main() -> Result<()> {
     let content = Content::builder()
-        .text("Hello world");
+        .text("Hello world")
+        .build()?;
 
     let email = Email::builder()
         .to(EmailAddress::new("user@example.com"))
         .subject("Hello 👋")
         .content(content)
-        .build();
+        .build()?;
 
     let _result = Templateless::new("<YOUR_API_KEY>")
         .send(email)

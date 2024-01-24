@@ -7,8 +7,7 @@ use serde::Deserialize;
 use std::collections::HashMap;
 
 use crate::{
-	errors::BadRequestCode, Email, Error, ObjectId, TemplatelessResult,
-	TEMPLATELESS_DOMAIN,
+	errors::BadRequestCode, Email, Error, ObjectId, Result, TEMPLATELESS_DOMAIN,
 };
 
 #[derive(Debug, Deserialize)]
@@ -38,17 +37,11 @@ impl Templateless {
 		self
 	}
 
-	pub async fn send(
-		&self,
-		email: Email,
-	) -> TemplatelessResult<Vec<ObjectId>> {
+	pub async fn send(&self, email: Email) -> Result<Vec<ObjectId>> {
 		self.send_many(vec![email]).await
 	}
 
-	pub async fn send_many(
-		&self,
-		emails: Vec<Email>,
-	) -> TemplatelessResult<Vec<ObjectId>> {
+	pub async fn send_many(&self, emails: Vec<Email>) -> Result<Vec<ObjectId>> {
 		let response = Client::new()
 			.post(format!("{}/v1/email", self.domain))
 			.header(AUTHORIZATION, format!("Bearer {}", self.api_key))

@@ -4,14 +4,13 @@ use crate::{
 	components::{
 		Button, Component, Image, Link, Otp, Socials, Text, ViewInBrowser,
 	},
-	Footer, Header, SocialItem,
+	Footer, Header, Result, SocialItem,
 };
 
 #[derive(Clone, Serialize)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Theme {
-	#[serde(rename = "unstyled")]
 	Unstyled,
-	#[serde(rename = "simple")]
 	Simple,
 }
 
@@ -91,8 +90,8 @@ impl Content {
 		self.push(Box::new(ViewInBrowser::new(text)))
 	}
 
-	pub fn build(self) -> Self {
-		self
+	pub fn build(&self) -> Result<Self> {
+		Ok(self.clone())
 	}
 
 	fn push(mut self, component: Box<dyn Component>) -> Self {

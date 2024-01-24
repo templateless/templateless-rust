@@ -1,7 +1,8 @@
 use serde::Deserialize;
+use std::result;
 use thiserror::Error;
 
-#[derive(Debug, Error, Deserialize)]
+#[derive(Debug, Error, Deserialize, Eq, PartialEq)]
 pub enum BadRequestCode {
 	#[error("account quota exceeded")]
 	AccountQuotaExceeded = 200,
@@ -11,8 +12,8 @@ pub enum BadRequestCode {
 	ProviderKeyInvalid = 301,
 }
 
-#[derive(Debug, Error, Deserialize)]
-pub enum TemplatelessError {
+#[derive(Debug, Error, Deserialize, Eq, PartialEq)]
+pub enum Error {
 	#[error("unauthorized")]
 	Unauthorized,
 	#[error("forbidden")]
@@ -26,3 +27,5 @@ pub enum TemplatelessError {
 	#[error("unknown error")]
 	Unknown,
 }
+
+pub type Result<T> = result::Result<T, Error>;
