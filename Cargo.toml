@@ -1,6 +1,6 @@
 [package]
 name = "templateless"
-version = "0.1.0"
+version = "0.1.0-alpha.1"
 edition = "2021"
 
 [dependencies]
@@ -17,3 +17,7 @@ exitcode = "1.1.2"
 [[example]]
 name = "simple"
 path = "examples/simple.rs"
+
+[[example]]
+name = "confirm_email"
+path = "examples/confirm_email.rs"

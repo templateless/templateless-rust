@@ -39,7 +39,7 @@ async fn main() -> Result<(), Error> {
 
 1. Test a very simple email:
 
-    ```shell
+    ```bash
     TEMPLATELESS_API_KEY=<YOUR_API_KEY> \
       TEMPLATELESS_EMAIL_ADDRESS=<YOUR_EMAIL_ADDRESS> \
       cargo run --example simple
@@ -47,10 +47,10 @@ async fn main() -> Result<(), Error> {
 
 1. Sample "confirm email" when user signs up:
 
-    ```shell
+    ```bash
     TEMPLATELESS_API_KEY=<YOUR_API_KEY> \
       TEMPLATELESS_EMAIL_ADDRESS=<YOUR_EMAIL_ADDRESS> \
-      cargo run --example confirm-email
+      cargo run --example confirm_email
     ```
 
 ## License
