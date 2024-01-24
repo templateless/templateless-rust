@@ -26,20 +26,6 @@ allow = ["MPL-2.0"]
 private = { ignore = true }
 
 [[licenses.clarify]]
-name = "webpki"
-expression = "ISC"
-license-files = [
-    { path = "LICENSE", hash = 0x001c7e6c }
-]
-
-[[licenses.clarify]]
-name = "rustls-webpki"
-expression = "ISC"
-license-files = [
-    { path = "LICENSE", hash = 0x001c7e6c }
-]
-
-[[licenses.clarify]]
 name = "ring"
 expression = "MIT AND ISC AND OpenSSL"
 license-files = [
@@ -48,7 +34,7 @@ license-files = [
 
 [sources]
 unknown-registry = "deny"
-unknown-git = "allow" # @TODO temporary for redis
+unknown-git = "deny"
 
 [bans]
 multiple-versions = "allow"
