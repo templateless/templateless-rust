@@ -1,4 +1,4 @@
-# [Templateless](https://templateless.com) Rust
+# Templateless Rust
 
 [![Github Actions](https://img.shields.io/github/actions/workflow/status/templateless/templateless-rust/tests.yml?style=flat-square)](https://github.com/templateless/templateless-rust/actions)
 [![License](https://img.shields.io/github/license/templateless/templateless-rust?color=green&style=flat-square)](/LICENSE)
@@ -9,7 +9,7 @@
 
 Don't waste time messing around with HTML or HTML builders.
 
-**Get your free API key [here](https://templateless.com).**
+**Get your free API key [here](https://app.templateless.com).**
 
 ## Quick Example
 
