@@ -1,7 +1,9 @@
 # Templateless Rust
 
-[![Github Actions](https://img.shields.io/github/actions/workflow/status/templateless/templateless-rust/tests.yml?style=flat-square)](https://github.com/templateless/templateless-rust/actions)
-[![License](https://img.shields.io/github/license/templateless/templateless-rust?color=green&style=flat-square)](/LICENSE)
+[![Latest version](https://img.shields.io/crates/v/templateless.svg)](https://crates.io/crates/templateless)
+[![Github Actions](https://img.shields.io/github/actions/workflow/status/templateless/templateless-rust/tests.yml)](https://github.com/templateless/templateless-rust/actions)
+[![Docs](https://docs.rs/templateless/badge.svg)](https://docs.rs/templateless/latest/templateless/)
+[![Crates.io Total Downloads](https://img.shields.io/crates/d/templateless)](https://crates.io/crates/templateless)
 
 ## What is this?
 
