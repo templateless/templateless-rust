@@ -25,7 +25,6 @@ pub enum ComponentId {
 	Button,
 	Image,
 	Link,
-	List,
 	Otp,
 	PoweredBy,
 	Socials,

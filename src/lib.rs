@@ -6,7 +6,7 @@ pub use email_address::EmailAddress;
 pub use errors::{Error, Result};
 pub use templateless::Templateless;
 
-static TEMPLATELESS_DOMAIN: &str = "https://templateless.com";
+static TEMPLATELESS_DOMAIN: &str = "https://api.templateless.com";
 
 pub type ObjectId = String;
 
