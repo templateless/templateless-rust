@@ -43,7 +43,7 @@ impl Templateless {
 
 	pub async fn send_many(&self, emails: Vec<Email>) -> Result<Vec<ObjectId>> {
 		let response = Client::new()
-			.post(format!("{}/v1/email", self.domain))
+			.post(format!("{}/v1/emails", self.domain))
 			.header(AUTHORIZATION, format!("Bearer {}", self.api_key))
 			.header(
 				REFERER,
