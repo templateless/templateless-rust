@@ -10,6 +10,8 @@ pub enum BadRequestCode {
 	ProviderKeyMissing = 300,
 	#[error("provider key invalid")]
 	ProviderKeyInvalid = 301,
+	#[error("email has no content to send")]
+	EmailNoContent = 400,
 }
 
 #[derive(Debug, Error, Deserialize, Eq, PartialEq)]
