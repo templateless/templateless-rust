@@ -7,12 +7,12 @@
 
 ## What is Templateless?
 
-### [Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can ship faster 🚀
+[Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can ship faster 🚀
 
 ## ✨ Features
 
-- 👋 **HTML-builder free** — email is a part of your code
-- ✅ **Components as code** — markdown, social icons, tweets, testimonials [+ more](https://templateless.com/features)
+- 👋 **Anti drag-and-drop by design** — emails are a part of your code
+- ✅ **Components as code** — function calls turn into email HTML components
 - 💻 **SDK for any language** — use your favorite [programming language](https://github.com/orgs/templateless/repositories)
 - 🔍 **Meticulously tested** — let us worry about email client compatibility
 - 💌 **Use your favorite ESP** — Amazon SES, SendGrid, Mailgun + more
@@ -34,12 +34,9 @@ Or add manually to your `Cargo.toml`:
 templateless = "0.1"
 ```
 
-## ⚡ Quick Example
+## 👩‍💻 Quick Example
 
 This is all it takes to send a signup confirmation email:
-
-> **Note**
-> 🔥 Get your **FREE** API key here: <https://app.templateless.com>
 
 ```rust
 use templateless::{Content, Email, EmailAddress, Templateless, Result};
@@ -65,18 +62,22 @@ async fn main() -> Result<()> {
 }
 ```
 
-You can find more examples in the [examples](examples) folder.
+Notes:
+
+- You can get your **free API key here**: <https://app.templateless.com> ✨
+
+- There are more examples in the [examples](examples) folder
 
 ## 🤝 Contributing
 
-- ❤ Contributions are more than welcome!
-- ★ Please star this repo for more visibility
+- Contributions are more than welcome <3
+- Please **star this repo** for more visibility
 
 ## 📫 Get in touch
 
-- 🙋‍♂️ For customer support feel free to email us at [github@templateless.com](mailto:github@templateless.com).
+- For customer support feel free to email us at [github@templateless.com](mailto:github@templateless.com)
 
-- 🥰 Have suggestions or want to give feedback? Here's how to reach us:
+- Have suggestions or want to give feedback? Here's how to reach us:
 
     - For feature requests, please [start a discussion](https://github.com/templateless/templateless-rust/discussions)
     - Found a bug? [Open an issue!](https://github.com/templateless/templateless-rust/issues)
