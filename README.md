@@ -62,16 +62,16 @@ async fn main() -> Result<()> {
 }
 ```
 
-Notes:
+Note:
 
-- You can get your **free API key here**: <https://app.templateless.com> ✨
+- Get your **free API key** here: <https://app.templateless.com> ✨
 
-- There are more examples in the [examples](examples) folder
+- There are more Rust examples in the [examples](examples) folder
 
 ## 🤝 Contributing
 
 - Contributions are more than welcome <3
-- Please **star this repo** for more visibility
+- Please **star this repo** for more visibility ★
 
 ## 📫 Get in touch
 
@@ -83,6 +83,6 @@ Notes:
     - Found a bug? [Open an issue!](https://github.com/templateless/templateless-rust/issues)
     - We are also on Twitter: [@Templateless](https://twitter.com/templateless)
 
-## ⚖️ License
+## 🍻 License
 
 [MIT](LICENSE)
