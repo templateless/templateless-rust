@@ -1,13 +1,29 @@
-# Templateless Rust
+<h1 align="center">
+  <a href="https://templateless.com/">
+    <img src="readme.png" alt="Templateless" width="360px">
+  </a>
+  <br />
+</h1>
+
+<p align="center">
+  <b>Ship faster by treating email as code 🚀</b> <br />
+</p>
+
+<h3 align="center">
+  <a href="https://templateless.com/">Website</a> &bull;
+  <a href="https://app.templateless.com/">Get Your API Key</a> &bull;
+  <a href="https://twitter.com/templateless">Twitter</a>
+</h3>
+
+---
 
 [![Latest version](https://img.shields.io/crates/v/templateless.svg)](https://crates.io/crates/templateless)
 [![Github Actions](https://img.shields.io/github/actions/workflow/status/templateless/templateless-rust/tests.yml)](https://github.com/templateless/templateless-rust/actions)
 [![Docs](https://docs.rs/templateless/badge.svg)](https://docs.rs/templateless/latest/templateless/)
 [![Crates.io Total Downloads](https://img.shields.io/crates/d/templateless)](https://crates.io/crates/templateless)
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/templateless)](https://twitter.com/templateless)
 
-## What is Templateless?
-
-[Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can ship faster 🚀
+[Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can focus on building your product.
 
 ## ✨ Features
 
