@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://templateless.com/">
-    <img src="readme.png" alt="Templateless" width="360px">
+    <img src="templateless.webp" alt="Templateless" width="450px">
   </a>
   <br />
 </h1>
@@ -9,11 +9,11 @@
   <b>Ship faster by treating email as code 🚀</b> <br />
 </p>
 
-<h3 align="center">
+<h4 align="center">
   <a href="https://templateless.com/">Website</a> &bull;
   <a href="https://app.templateless.com/">Get Your API Key</a> &bull;
   <a href="https://twitter.com/templateless">Twitter</a>
-</h3>
+</h4>
 
 ---
 
