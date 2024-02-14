@@ -21,7 +21,7 @@
 [![Github Actions](https://img.shields.io/github/actions/workflow/status/templateless/templateless-rust/tests.yml)](https://github.com/templateless/templateless-rust/actions)
 [![Docs](https://docs.rs/templateless/badge.svg)](https://docs.rs/templateless/latest/templateless/)
 [![Crates.io Total Downloads](https://img.shields.io/crates/d/templateless)](https://crates.io/crates/templateless)
-[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/templateless)](https://twitter.com/templateless)
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/Templateless)](https://twitter.com/templateless)
 
 [Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can focus on building your product.
 
