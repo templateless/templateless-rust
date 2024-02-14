@@ -34,9 +34,6 @@ Or add manually to your `Cargo.toml`:
 templateless = "0.1"
 ```
 
-> **Note**
-> 🚧 **This SDK is not stable yet.** The API might change as more features are added. Please pay attention to the [CHANGELOG](CHANGELOG.md) for breaking changes.
-
 ## 👩‍💻 Quick example
 
 This is all it takes to send a signup confirmation email:
@@ -65,7 +62,10 @@ async fn main() -> Result<()> {
 }
 ```
 
-Note:
+> **Note**
+> 🚧 **This SDK is not stable yet.** The API might change as more features are added. Please pay attention to the [CHANGELOG](CHANGELOG.md) for breaking changes.
+
+Examples:
 
 1. Get your **free API key** here: <https://app.templateless.com> ✨
 1. There are more Rust examples in the [examples](examples) folder
