@@ -1,6 +1,6 @@
 # CHANGELOG
 
-**Unpublished:**
+**v0.1.0-alpha.5:**
 - Introduced `CHANGELOG.md`
 - Introduced new services as [social icons](examples/confirm_email.rs):
   - `Service::Phone` (converts into a link with `tel:` prefix)
