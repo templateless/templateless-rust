@@ -3,13 +3,39 @@ use serde::Serialize;
 use crate::components::{Component, ComponentId};
 
 #[derive(Clone, Debug, Serialize, Eq, PartialEq, Hash)]
-#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Service {
+	#[serde(rename = "WEBSITE")]
 	Website,
+	#[serde(rename = "EMAIL")]
 	Email,
+	#[serde(rename = "PHONE")]
+	Phone,
+	#[serde(rename = "FACEBOOK")]
+	Facebook,
+	#[serde(rename = "YOUTUBE")]
+	YouTube,
+	#[serde(rename = "TWITTER")]
 	Twitter,
+	#[serde(rename = "X")]
 	X,
-	Github,
+	#[serde(rename = "GITHUB")]
+	GitHub,
+	#[serde(rename = "INSTAGRAM")]
+	Instagram,
+	#[serde(rename = "LINKEDIN")]
+	LinkedIn,
+	#[serde(rename = "SLACK")]
+	Slack,
+	#[serde(rename = "DISCORD")]
+	Discord,
+	#[serde(rename = "TIKTOK")]
+	TikTok,
+	#[serde(rename = "SNAPCHAT")]
+	Snapchat,
+	#[serde(rename = "THREADS")]
+	Threads,
+	#[serde(rename = "TELEGRAM")]
+	Telegram,
 }
 
 #[derive(Debug, Serialize, Clone, Hash, PartialEq, Eq)]

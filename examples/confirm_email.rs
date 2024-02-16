@@ -13,7 +13,7 @@ async fn main() -> Result<()> {
 	let footer = Footer::builder()
 		.socials(vec![
 			SocialItem::new(Service::Twitter, "ExampleApp"),
-			SocialItem::new(Service::Github, "ExampleApp"),
+			SocialItem::new(Service::GitHub, "ExampleApp"),
 		])
 		.link("Unsubscribe", "https://example.com/unsubscribe?id=123")
 		.build()?;
