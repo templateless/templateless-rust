@@ -1,5 +1,8 @@
 # CHANGELOG
 
+**v0.1.0-alpha.6:**
+- Image component now requires only `src`; the other params are optional
+
 **v0.1.0-alpha.5:**
 - Introduced `CHANGELOG.md`
 - Introduced new services as [social icons](examples/confirm_email.rs):

@@ -61,13 +61,7 @@ impl Content {
 		height: Option<usize>,
 		alt: Option<String>,
 	) -> Self {
-		self.push(Box::new(Image::new(
-			src.to_string(),
-			alt.unwrap_or_default(),
-			width.unwrap_or_default(),
-			height.unwrap_or_default(),
-			url.unwrap_or_default(),
-		)))
+		self.push(Box::new(Image::new(src, alt, width, height, url)))
 	}
 
 	pub fn link(self, text: &str, url: &str) -> Self {

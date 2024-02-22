@@ -6,27 +6,27 @@ use crate::components::{Component, ComponentId};
 pub struct Image {
 	id: ComponentId,
 	src: String,
-	alt: String,
-	width: usize,
-	height: usize,
-	url: String,
+	alt: Option<String>,
+	width: Option<usize>,
+	height: Option<usize>,
+	url: Option<String>,
 }
 
 impl Image {
 	pub fn new(
-		src: String,
-		alt: String,
-		width: usize,
-		height: usize,
-		url: String,
+		src: &str,
+		alt: Option<String>,
+		width: Option<usize>,
+		height: Option<usize>,
+		url: Option<String>,
 	) -> Self {
 		Self {
 			id: ComponentId::Image,
 			src: src.to_string(),
-			alt: alt.to_string(),
+			alt,
 			width,
 			height,
-			url: url.to_string(),
+			url,
 		}
 	}
 }
