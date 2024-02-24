@@ -2,6 +2,7 @@
 
 **v0.1.0-alpha.6:**
 - Image component now requires only `src`; the other params are optional
+- `Image::new()` param order has changed (2nd param is `url`, not `alt`)
 
 **v0.1.0-alpha.5:**
 - Introduced `CHANGELOG.md`
