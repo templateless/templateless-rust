@@ -88,7 +88,7 @@ Examples:
 
 ## 💌 Components
 
-<details><h3><summary>Text</summary></h3>
+<details><summary><h3>Text</h3></summary>
 
 Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
 
@@ -109,7 +109,7 @@ Content::builder()
 ```
 
 </details>
-<details><h3><summary>Link</summary></h3>
+<details><summary><h3>Link</h3></summary>
 
 Link component adds an anchor tag. This is the same as a text component with the link written in markdown:
 
@@ -121,7 +121,7 @@ Content::builder()
 ```
 
 </details>
-<details><h3><summary>Button</summary></h3>
+<details><summary><h3>Button</h3></summary>
 
 Button can also be used as a call to action.
 
@@ -135,7 +135,7 @@ Content::builder()
 ```
 
 </details>
-<details><h3><summary>Image</summary></h3>
+<details><summary><h3>Image</h3></summary>
 
 Image component will link to an image within your email.
 
@@ -174,7 +174,7 @@ Only the `src` parameter is required; everything else is optional.
 1. You can specify `width` and/or `height` if you'd like (they are optional). Keep in mind that images will be scaled down to fit within the email theme, if they're too large.
 
 </details>
-<details><h3><summary>One-Time Password</summary></h3>
+<details><summary><h3>One-Time Password</h3></summary>
 
 OTP component is designed for showing temporary passwords and reset codes.
 
@@ -186,7 +186,7 @@ Content::builder()
 ```
 
 </details>
-<details><h3><summary>Social Icons</summary></h3>
+<details><summary><h3>Social Icons</h3></summary>
 
 Every theme comes with easily linkable social icons to connect with your company's profiles. Usually, they're placed somewhere in the footer.
 
@@ -216,7 +216,7 @@ Content::builder()
 ```
 
 </details>
-<details><h3><summary>View in Browser</summary></h3>
+<details><summary><h3>View in Browser</h3></summary>
 
 If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
 
