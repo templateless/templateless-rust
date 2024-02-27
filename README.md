@@ -88,142 +88,150 @@ Examples:
 
 ## 💌 Components
 
-### Text
+<details><h3><summary>Text</summary></h3>
 
-  Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
+Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
 
-  - Bold text: `**bold text**`
-  - Italic text: `_italic text_`
-  - Link: `[link text](https://example.com)`
-  - Also a link: `<https://example.com>`
-  - Headers (h1-h6):
+- Bold text: `**bold text**`
+- Italic text: `_italic text_`
+- Link: `[link text](https://example.com)`
+- Also a link: `<https://example.com>`
+- Headers (h1-h6):
 
-    - `# Big Header`
-    - `###### Small Header`
+  - `# Big Header`
+  - `###### Small Header`
 
-  ```rust
-  Content::builder()
-    .text("## Thank you for signing up")
-    .text("Please **verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
-    .build()?;
-  ```
+```rust
+Content::builder()
+  .text("## Thank you for signing up")
+  .text("Please **verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
+  .build()?;
+```
 
-### Link
+</details>
+<details><h3><summary>Link</summary></h3>
 
-  Link component adds an anchor tag. This is the same as a text component with the link written in markdown:
+Link component adds an anchor tag. This is the same as a text component with the link written in markdown:
 
-  ```rust
-  Content::builder()
-    .link("Confirm Email", "https://example.com/confirm?token=XYZ") // or...
-    .text("[Confirm Email](https://example.com/confirm?token=XYZ)")
-    .build()?;
-  ```
+```rust
+Content::builder()
+  .link("Confirm Email", "https://example.com/confirm?token=XYZ") // or...
+  .text("[Confirm Email](https://example.com/confirm?token=XYZ)")
+  .build()?;
+```
 
-### Button
+</details>
+<details><h3><summary>Button</summary></h3>
 
-  Button can also be used as a call to action.
+Button can also be used as a call to action.
 
-  > **Note**
-  > Button color is set via your dashboard's app color.
+> **Note**
+> Button color is set via your dashboard's app color.
 
-  ```rust
-  Content::builder()
-    .button("Confirm Email", "https://example.com/confirm?token=XYZ")
-    .build()?;
-  ```
+```rust
+Content::builder()
+  .button("Confirm Email", "https://example.com/confirm?token=XYZ")
+  .build()?;
+```
 
-### Image
+</details>
+<details><h3><summary>Image</summary></h3>
 
-  Image component will link to an image within your email.
+Image component will link to an image within your email.
 
-  > **Note**
-  > Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
+> **Note**
+> Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
 
-  ```rust
-  Content::builder()
-    .image(
-      "https://example.com/image.jpg",  // where the image is hosted
-      Some("https://example.com"),      // [optional] link url, if you want it to be clickable
-      Some(200),                        // [optional] width
-      Some(100),                        // [optional] height
-      Some("Alt text"),                 // [optional] alternate text
-    )
-    .build()?;
-  ```
+```rust
+Content::builder()
+  .image(
+    "https://example.com/image.jpg",  // where the image is hosted
+    Some("https://example.com"),      // [optional] link url, if you want it to be clickable
+    Some(200),                        // [optional] width
+    Some(100),                        // [optional] height
+    Some("Alt text"),                 // [optional] alternate text
+  )
+  .build()?;
+```
 
-  Only the `src` parameter is required; everything else is optional.
+Only the `src` parameter is required; everything else is optional.
 
-  **If you have "Image Optimization" turned on:**
+**If you have "Image Optimization" turned on:**
 
-  1. Your images will be cached and distributed by our CDN for faster loading. The cache does not expire. If you'd like to re-cache, simply append a query parameter to the end of your image url.
-  1. Images will be converted into formats that are widely supported by email clients. The following image formats will be processed automatically:
+1. Your images will be cached and distributed by our CDN for faster loading. The cache does not expire. If you'd like to re-cache, simply append a query parameter to the end of your image url.
+1. Images will be converted into formats that are widely supported by email clients. The following image formats will be processed automatically:
 
-      - Jpeg
-      - Png
-      - Gif
-      - WebP
-      - Tiff
-      - Ico
-      - Bmp
-      - Svg
+    - Jpeg
+    - Png
+    - Gif
+    - WebP
+    - Tiff
+    - Ico
+    - Bmp
+    - Svg
 
-  1. Maximum image size is 5MB for free accounts and 20MB for paid accounts.
-  1. You can specify `width` and/or `height` if you'd like (they are optional). Keep in mind that images will be scaled down to fit within the email theme, if they're too large.
+1. Maximum image size is 5MB for free accounts and 20MB for paid accounts.
+1. You can specify `width` and/or `height` if you'd like (they are optional). Keep in mind that images will be scaled down to fit within the email theme, if they're too large.
 
-### One-Time Password
+</details>
+<details><h3><summary>One-Time Password</summary></h3>
 
-  OTP component is designed for showing temporary passwords and reset codes.
+OTP component is designed for showing temporary passwords and reset codes.
 
-  ```rust
-  Content::builder()
-    .text("Here's your **temporary login code**:")
-    .otp("XY78-2BT0-YFNB-ALW9")
-    .build()?;
-  ```
+```rust
+Content::builder()
+  .text("Here's your **temporary login code**:")
+  .otp("XY78-2BT0-YFNB-ALW9")
+  .build()?;
+```
 
-### Social Icons
+</details>
+<details><h3><summary>Social Icons</summary></h3>
 
-  Every theme comes with easily linkable social icons to connect with your company's profiles. Usually, they're placed somewhere in the footer.
+Every theme comes with easily linkable social icons to connect with your company's profiles. Usually, they're placed somewhere in the footer.
 
-  These are all the supported platforms:
+These are all the supported platforms:
 
-  ```rust
-  Content::builder()
-		.socials(vec![
-			SocialItem::new(Service::Website, "https://example.com"),
-			SocialItem::new(Service::Email, "username@example.com"),
-			SocialItem::new(Service::Phone, "123-456-7890"), // `tel:` link
-			SocialItem::new(Service::Facebook, "Username"),
-			SocialItem::new(Service::YouTube, "ChannelID"),
-			SocialItem::new(Service::Twitter, "Username"),
-			SocialItem::new(Service::X, "Username"),
-			SocialItem::new(Service::GitHub, "Username"),
-			SocialItem::new(Service::Instagram, "Username"),
-			SocialItem::new(Service::LinkedIn, "Username"),
-			SocialItem::new(Service::Slack, "Org"),
-			SocialItem::new(Service::Discord, "Username"),
-			SocialItem::new(Service::TikTok, "Username"),
-			SocialItem::new(Service::Snapchat, "Username"),
-			SocialItem::new(Service::Threads, "Username"),
-			SocialItem::new(Service::Telegram, "Username"),
-		])
-    .build()?;
-  ```
+```rust
+Content::builder()
+  .socials(vec![
+    SocialItem::new(Service::Website, "https://example.com"),
+    SocialItem::new(Service::Email, "username@example.com"),
+    SocialItem::new(Service::Phone, "123-456-7890"), // `tel:` link
+    SocialItem::new(Service::Facebook, "Username"),
+    SocialItem::new(Service::YouTube, "ChannelID"),
+    SocialItem::new(Service::Twitter, "Username"),
+    SocialItem::new(Service::X, "Username"),
+    SocialItem::new(Service::GitHub, "Username"),
+    SocialItem::new(Service::Instagram, "Username"),
+    SocialItem::new(Service::LinkedIn, "Username"),
+    SocialItem::new(Service::Slack, "Org"),
+    SocialItem::new(Service::Discord, "Username"),
+    SocialItem::new(Service::TikTok, "Username"),
+    SocialItem::new(Service::Snapchat, "Username"),
+    SocialItem::new(Service::Threads, "Username"),
+    SocialItem::new(Service::Telegram, "Username"),
+  ])
+  .build()?;
+```
 
-### View in Browser
+</details>
+<details><h3><summary>View in Browser</summary></h3>
 
-  If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
+If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
 
-  Usually, this is placed in the header or footer of the email.
+Usually, this is placed in the header or footer of the email.
 
-  > **Note**
-  > This will make the email public to anyone that has access to the link.
+> **Note**
+> This will make the email public to anyone that has access to the link.
 
-  ```rust
-  Content::builder()
-    .view_in_browser("Read Email in Browser")
-    .build()?;
-  ```
+```rust
+Content::builder()
+  .view_in_browser("Read Email in Browser")
+  .build()?;
+```
+
+</details>
 
 ## 🤝 Contributing
 
