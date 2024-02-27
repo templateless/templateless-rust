@@ -78,7 +78,7 @@ async fn main() -> Result<()> {
 }
 ```
 
-> **Note**
+> [!NOTE]
 > 🚧 **This SDK is not stable yet.** The API might change as more features are added. Please pay attention to the [CHANGELOG](CHANGELOG.md) for breaking changes.
 
 Examples:
@@ -88,25 +88,26 @@ Examples:
 
 ## 💌 Components
 
-<details><summary><h3>Text</h3></summary>
+<details>
+  <summary><h3>Text</h3></summary>
 
-Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
+  Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
 
-- Bold text: `**bold text**`
-- Italic text: `_italic text_`
-- Link: `[link text](https://example.com)`
-- Also a link: `<https://example.com>`
-- Headers (h1-h6):
+  - Bold text: `**bold text**`
+  - Italic text: `_italic text_`
+  - Link: `[link text](https://example.com)`
+  - Also a link: `<https://example.com>`
+  - Headers (h1-h6):
 
-  - `# Big Header`
-  - `###### Small Header`
+    - `# Big Header`
+    - `###### Small Header`
 
-```rust
-Content::builder()
-  .text("## Thank you for signing up")
-  .text("Please **verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
-  .build()?;
-```
+  ```rust
+  Content::builder()
+    .text("## Thank you for signing up")
+    .text("Please **verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
+    .build()?;
+  ```
 
 </details>
 <details><summary><h3>Link</h3></summary>
@@ -125,7 +126,7 @@ Content::builder()
 
 Button can also be used as a call to action.
 
-> **Note**
+> [!NOTE]
 > Button color is set via your dashboard's app color.
 
 ```rust
@@ -139,7 +140,7 @@ Content::builder()
 
 Image component will link to an image within your email.
 
-> **Note**
+> [!NOTE]
 > Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
 
 ```rust
@@ -222,7 +223,7 @@ If you'd like your recipients to be able to read the email in a browser, you can
 
 Usually, this is placed in the header or footer of the email.
 
-> **Note**
+> [!NOTE]
 > This will make the email public to anyone that has access to the link.
 
 ```rust
