@@ -91,16 +91,16 @@ Examples:
 Components located in the header and footer sections will have their own styling (and usually smaller text). Example:
 
 ```rust
-let header = Header::builder()
+let header = Header::builder() // header of the email
   .text("Smaller text")
   .build()?;
 
-let content = Content::builder()
+let content = Content::builder() // body of the email
   .text("Normal text")
   .build()?;
 ```
 
-Currently there are 2 themes, `Theme::Unstyled` and `Theme::Simple`:
+Currently there are 2 themes, `Theme::Unstyled` and `Theme::Simple`
 
 ```rust
 let content = Content::builder()
@@ -112,7 +112,7 @@ let content = Content::builder()
 All of the following components can be mixed and matched to create dynamic emails:
 
 <details>
-  <summary>Text</summary>
+  <summary>Text / Markdown</summary>
 
 Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
 
