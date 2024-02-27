@@ -25,6 +25,8 @@
 
 [Templateless](https://templateless.com) lets you generate and send transactional emails quickly and easily so you can focus on building your product.
 
+It's perfect for SaaS, web apps, mobile apps, scripts and anywhere you have to send email programmatically.
+
 ## ✨ Features
 
 - 👋 **Anti drag-and-drop by design** — emails are a part of your code
@@ -56,7 +58,7 @@ You'll need an API key for the example below ⬇️
 
 [![Get Your API Key](https://img.shields.io/badge/Get_Your_API_Key-free-blue?style=for-the-badge)](https://app.templateless.com/)
 
-- 3,000 **free** emails per month
+- 3,000 emails per month
 - All popular email provider integrations
 - Start sending right away
 
@@ -88,17 +90,14 @@ async fn main() -> Result<()> {
 }
 ```
 
+There are more Rust examples in the [examples](examples) folder ✨
+
 > [!NOTE]
-> 🚧 **The SDK is not stable yet.** This API might change as more features are added. Please star and watch the repo so you can keep an eye on the [CHANGELOG](CHANGELOG.md).
-
-Examples:
-
-1. Get your **free API key** here: <https://app.templateless.com> ✨
-1. There are more Rust examples in the [examples](examples) folder
+> 🚧 **The SDK is not stable yet.** This API might change as more features are added. Please watch the repo for the changes in the [CHANGELOG](CHANGELOG.md).
 
 ## 💌 Components
 
-Emails are crafted programmatically by making a few function calls. There's no dealing with HTML or drag-and-drop builders.
+Emails are crafted programmatically by making function calls. There's no dealing with HTML or drag-and-drop builders.
 
 All of the following components can be mixed and matched to create dynamic emails:
 
@@ -239,7 +238,7 @@ Content::builder()
 
 </details>
 
-Components located in the header and footer sections will have their own styling (and usually smaller text). For example:
+Components can be placed in the header, body and footer of the email. Header and footer styling is usually a bit different from the body (for example the text is smaller).
 
 ```rust
 let header = Header::builder() // header of the email
@@ -251,7 +250,7 @@ let content = Content::builder() // body of the email
   .build()?;
 ```
 
-Currently there are 2 themes, `Theme::Unstyled` and `Theme::Simple`
+Currently there are 2 themes to choose from: `Theme::Unstyled` and `Theme::Simple`
 
 ```rust
 let content = Content::builder()
