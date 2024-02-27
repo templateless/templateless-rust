@@ -50,9 +50,11 @@ Or add manually to your `Cargo.toml`:
 templateless = "0.1"
 ```
 
-## 🔑 Grab Your API Key
+## 🔑 Get Your API Key
 
-[![Get Your API Key](https://img.shields.io/badge/Get_Your_API_Key-free-blue)](https://app.templateless.com/)
+You'll need an API key for the example below ⬇️
+
+[![Get Your API Key](https://img.shields.io/badge/Get_Your_API_Key-free-blue?style=for-the-badge)](https://app.templateless.com/)
 
 - 3,000 **free** emails per month
 - All popular email provider integrations
