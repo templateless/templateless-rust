@@ -88,26 +88,7 @@ Examples:
 
 ## 💌 Components
 
-Components located in the header and footer sections will have their own styling (and usually smaller text). Example:
-
-```rust
-let header = Header::builder() // header of the email
-  .text("Smaller text")
-  .build()?;
-
-let content = Content::builder() // body of the email
-  .text("Normal text")
-  .build()?;
-```
-
-Currently there are 2 themes, `Theme::Unstyled` and `Theme::Simple`
-
-```rust
-let content = Content::builder()
-  .theme(Theme::Simple)
-  .text("Hello world")
-  .build()?;
-```
+Emails are crafted programmatically by making a few function calls. There's no dealing with HTML or drag-and-drop builders.
 
 All of the following components can be mixed and matched to create dynamic emails:
 
@@ -236,11 +217,9 @@ Content::builder()
 </details>
 <details><summary>View in Browser</summary>
 
-If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
+If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link. Usually, this is placed in the header or footer of the email.
 
 **This will make the email public to anyone that has access to the link.**
-
-Usually, this is placed in the header or footer of the email.
 
 ```rust
 Content::builder()
@@ -249,6 +228,27 @@ Content::builder()
 ```
 
 </details>
+
+Components located in the header and footer sections will have their own styling (and usually smaller text). For example:
+
+```rust
+let header = Header::builder() // header of the email
+  .text("Smaller text")
+  .build()?;
+
+let content = Content::builder() // body of the email
+  .text("Normal text")
+  .build()?;
+```
+
+Currently there are 2 themes, `Theme::Unstyled` and `Theme::Simple`
+
+```rust
+let content = Content::builder()
+  .theme(Theme::Simple)
+  .text("Hello world")
+  .build()?;
+```
 
 ## 🤝 Contributing
 
