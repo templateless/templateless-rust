@@ -212,7 +212,7 @@ Content::builder()
 </details>
 <details><summary>Social Icons</summary>
 
-Every theme comes with easily linkable social icons to connect with your company's profiles. Usually, they're placed somewhere in the footer.
+You can easily add social icons with links by simply specifying the username. Usually, this component is placed in the footer of the email.
 
 These are all the supported platforms:
 
