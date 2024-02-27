@@ -147,10 +147,7 @@ Content::builder()
 </details>
 <details><summary>Button</summary>
 
-Button can also be used as a call to action.
-
-> [!NOTE]
-> Button color is set via your dashboard's app color.
+Button can also be used as a call to action. Button color is set via your dashboard's app color.
 
 ```rust
 Content::builder()
@@ -161,10 +158,7 @@ Content::builder()
 </details>
 <details><summary>Image</summary>
 
-Image component will link to an image within your email.
-
-> [!NOTE]
-> Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
+Image component will link to an image within your email. Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
 
 ```rust
 Content::builder()
@@ -244,10 +238,9 @@ Content::builder()
 
 If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
 
-Usually, this is placed in the header or footer of the email.
+**This will make the email public to anyone that has access to the link.**
 
-> [!NOTE]
-> This will make the email public to anyone that has access to the link.
+Usually, this is placed in the header or footer of the email.
 
 ```rust
 Content::builder()
