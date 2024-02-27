@@ -86,6 +86,135 @@ Examples:
 1. Get your **free API key** here: <https://app.templateless.com> ✨
 1. There are more Rust examples in the [examples](examples) folder
 
+## 💌 Components
+
+### Text
+
+  Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
+
+  - Bold text: `**bold text**`
+  - Italic text: `_italic text_`
+  - Link: `[link text](https://example.com)`
+  - Also a link: `<https://example.com>`
+  - Header (h1-h6): `# Header`
+
+  ```rust
+  Content::builder()
+    .text("**Verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
+    .build()?;
+  ```
+
+### Link
+
+  Link component adds an anchor tag. This is the same as a text component with the link written in markdown:
+
+  ```rust
+  Content::builder()
+    .link("Confirm Email", "https://example.com/confirm?token=XYZ")
+    .build()?;
+  ```
+
+### Button
+
+  Button can also be used as a call to action. Button color can be controlled via your dashboard by setting the app's theme color.
+
+  ```rust
+  Content::builder()
+    .button("Confirm Email", "https://example.com/confirm?token=XYZ")
+    .build()?;
+  ```
+
+### Image
+
+  Image component will link to an image within your email.
+
+> **Note**
+> Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
+
+  ```rust
+  Content::builder()
+    .image(
+      "https://example.com/image.jpg",  // where the image is located
+      Some("https://example.com"),      // [optional] link url, if you want it to be clickable
+      Some(200),                        // [optional] width
+      Some(100),                        // [optional] height
+      Some("Alt text"),                 // [optional] alternative text
+    )
+    .build()?;
+  ```
+
+  Only the `src` parameter is required; everything else is optional.
+
+  **If you have "Image Optimization" turned on:**
+
+  1. Your images will be cached and distributed by our CDN for faster loading. The cache does not expire. If you'd like to purge cache, simply append a query parameter to the end of your image url.
+  1. Images will be automatically converted into formats that are widely supported by email clients. The following image formats will be processed:
+
+      - Jpeg
+      - Png
+      - Gif
+      - WebP
+      - Tiff
+      - Ico
+      - Bmp
+      - Svg
+
+  1. Maximum image size is 5MB for free accounts and 20MB for paid accounts.
+  1. You can specify `width` and/or `height` if you'd like (those parameters are optional). Keep in mind that images will be scaled down to fit with the email theme if they're too large.
+
+### One-Time Password
+
+  OTP component is designed for showing temporary passwords and reset codes.
+
+  ```rust
+  Content::builder()
+    .text("Here's your **temporary login code**:")
+    .otp("XY78-2BT0-YFNB-ALW9")
+    .build()?;
+  ```
+
+### Social Icons
+
+  Every theme comes with easily linkable social icons to connect with your company's profiles.
+
+  These are all the supported platforms:
+
+  ```rust
+  Content::builder()
+		.socials(vec![
+			SocialItem::new(Service::Website, "https://example.com"),
+			SocialItem::new(Service::Email, "username@example.com"),
+			SocialItem::new(Service::Phone, "123-456-7890"), // `tel:` link
+			SocialItem::new(Service::Facebook, "Username"),
+			SocialItem::new(Service::YouTube, "ChannelID"),
+			SocialItem::new(Service::Twitter, "Username"),
+			SocialItem::new(Service::X, "Username"),
+			SocialItem::new(Service::GitHub, "Username"),
+			SocialItem::new(Service::Instagram, "Username"),
+			SocialItem::new(Service::LinkedIn, "Username"),
+			SocialItem::new(Service::Slack, "Org"),
+			SocialItem::new(Service::Discord, "Username"),
+			SocialItem::new(Service::TikTok, "Username"),
+			SocialItem::new(Service::Snapchat, "Username"),
+			SocialItem::new(Service::Threads, "Username"),
+			SocialItem::new(Service::Telegram, "Username"),
+		])
+    .build()?;
+  ```
+
+### View in Browser
+
+  If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
+
+  > **Note**
+  > This will make the email public to anyone that has access to the link.
+
+  ```rust
+  Content::builder()
+    .view_in_browser("Read Email in Browser")
+    .build()?;
+  ```
+
 ## 🤝 Contributing
 
 - Contributions are more than welcome <3
