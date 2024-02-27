@@ -9,8 +9,8 @@ pub struct ViewInBrowser {
 }
 
 impl ViewInBrowser {
-	pub fn new(text: &str) -> Self {
-		Self { id: ComponentId::ViewInBrowser, text: text.to_string() }
+	pub fn new(text: Option<String>) -> Self {
+		Self { id: ComponentId::ViewInBrowser, text: text.unwrap_or_default() }
 	}
 }
 

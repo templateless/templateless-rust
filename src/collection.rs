@@ -48,7 +48,7 @@ impl Collection {
 		self.push(Box::new(Text::new(text)))
 	}
 
-	pub fn view_in_browser(self, text: &str) -> Self {
+	pub fn view_in_browser(self, text: Option<String>) -> Self {
 		self.push(Box::new(ViewInBrowser::new(text)))
 	}
 

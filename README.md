@@ -228,11 +228,13 @@ Content::builder()
 
 If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link. Usually, this is placed in the header or footer of the email.
 
+You can optionally provide the text for the link. If none is provided, default is used: "View in browser"
+
 **This will make the email public to anyone that has access to the link.**
 
 ```rust
 Content::builder()
-  .view_in_browser("Read Email in Browser")
+  .view_in_browser(Some("Read Email in Browser".to_string()))
   .build()?;
 ```
 
@@ -272,7 +274,7 @@ let content = Content::builder()
 
     - For feature requests, please [start a discussion](https://github.com/templateless/templateless-rust/discussions)
     - Found a bug? [Open an issue!](https://github.com/templateless/templateless-rust/issues)
-    - Say hi: [@Templateless](https://twitter.com/templateless)
+    - Say hi [@Templateless](https://twitter.com/templateless) 👋
 
 ## 🍻 License
 

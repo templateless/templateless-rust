@@ -1,8 +1,10 @@
 # CHANGELOG
 
 **v0.1.0-alpha.6:**
-- Image component now requires only `src`; the other params are optional
-- `Image::new()` param order has changed (2nd param is `url`, not `alt`)
+- `README.md` cleanup (listing of components)
+- `Image` component now requires only `src`; the other params are optional
+  - `content.image(...)` param order has changed (2nd param is `url`, not `alt`)
+- `ViewInBrowser` component has changed: text is optional
 
 **v0.1.0-alpha.5:**
 - Introduced `CHANGELOG.md`
