@@ -50,6 +50,14 @@ Or add manually to your `Cargo.toml`:
 templateless = "0.1"
 ```
 
+## 🔑 Grab Your API Key
+
+[<kbd> <br/> Get Your API Key <br/> </kbd>][https://app.templateless.com/]
+
+- 3,000 **free** emails per month
+- All popular email provider integrations
+- Start sending right away
+
 ## 👩‍💻 Quick example
 
 This is all it takes to send a signup confirmation email:
