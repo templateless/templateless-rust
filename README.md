@@ -88,29 +88,52 @@ Examples:
 
 ## 💌 Components
 
-<details>
-  <summary><h3>Text</h3></summary>
+Components located in the header and footer sections will have their own styling (and usually smaller text). Example:
 
-  Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
-
-  - Bold text: `**bold text**`
-  - Italic text: `_italic text_`
-  - Link: `[link text](https://example.com)`
-  - Also a link: `<https://example.com>`
-  - Headers (h1-h6):
-
-    - `# Big Header`
-    - `###### Small Header`
-
-  ```rust
-  Content::builder()
-    .text("## Thank you for signing up")
-    .text("Please **verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
+```rust
+  let header = Header::builder()
+    .text("Smaller text")
     .build()?;
-  ```
+  
+  let content = Content::builder()
+    .text("Normal text")
+    .build()?;
+```
+
+Currently there are 2 themes, `Theme::Unstyled` and `Theme::Simple`:
+
+```rust
+  let content = Content::builder()
+    .theme(Theme::Simple)
+    .text("Hello world")
+    .build()?;
+```
+
+All of the following components can be mixed and matched to create dynamic emails:
+
+<details>
+  <summary>Text</summary>
+
+Text component allow you to insert a paragraph. Each paragraph supports basic markdown:
+
+- Bold text: `**bold text**`
+- Italic text: `_italic text_`
+- Link: `[link text](https://example.com)`
+- Also a link: `<https://example.com>`
+- Headers (h1-h6):
+
+  - `# Big Header`
+  - `###### Small Header`
+
+```rust
+Content::builder()
+  .text("## Thank you for signing up")
+  .text("Please **verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
+  .build()?;
+```
 
 </details>
-<details><summary><h3>Link</h3></summary>
+<details><summary>Link</summary>
 
 Link component adds an anchor tag. This is the same as a text component with the link written in markdown:
 
@@ -122,7 +145,7 @@ Content::builder()
 ```
 
 </details>
-<details><summary><h3>Button</h3></summary>
+<details><summary>Button</summary>
 
 Button can also be used as a call to action.
 
@@ -136,7 +159,7 @@ Content::builder()
 ```
 
 </details>
-<details><summary><h3>Image</h3></summary>
+<details><summary>Image</summary>
 
 Image component will link to an image within your email.
 
@@ -175,7 +198,7 @@ Only the `src` parameter is required; everything else is optional.
 1. You can specify `width` and/or `height` if you'd like (they are optional). Keep in mind that images will be scaled down to fit within the email theme, if they're too large.
 
 </details>
-<details><summary><h3>One-Time Password</h3></summary>
+<details><summary>One-Time Password</summary>
 
 OTP component is designed for showing temporary passwords and reset codes.
 
@@ -187,7 +210,7 @@ Content::builder()
 ```
 
 </details>
-<details><summary><h3>Social Icons</h3></summary>
+<details><summary>Social Icons</summary>
 
 Every theme comes with easily linkable social icons to connect with your company's profiles. Usually, they're placed somewhere in the footer.
 
@@ -217,7 +240,7 @@ Content::builder()
 ```
 
 </details>
-<details><summary><h3>View in Browser</h3></summary>
+<details><summary>View in Browser</summary>
 
 If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
 
