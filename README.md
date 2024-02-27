@@ -95,7 +95,7 @@ There are more Rust examples in the [examples](examples) folder ✨
 > [!NOTE]
 > 🚧 **The SDK is not stable yet.** This API might change as more features are added. Please watch the repo for the changes in the [CHANGELOG](CHANGELOG.md).
 
-## 💌 Components
+## 🔳 Components
 
 Emails are crafted programmatically by making function calls. There's no dealing with HTML or drag-and-drop builders.
 
@@ -261,8 +261,8 @@ let content = Content::builder()
 
 ## 🤝 Contributing
 
-- Contributions are more than welcome <3
-- Please **star this repo** for more visibility ★
+- Contributions are more than welcome
+- Please **star this repo** for more visibility <3
 
 ## 📫 Get in touch
 
@@ -272,7 +272,7 @@ let content = Content::builder()
 
     - For feature requests, please [start a discussion](https://github.com/templateless/templateless-rust/discussions)
     - Found a bug? [Open an issue!](https://github.com/templateless/templateless-rust/issues)
-    - We are also on Twitter: [@Templateless](https://twitter.com/templateless)
+    - Say hi: [@Templateless](https://twitter.com/templateless)
 
 ## 🍻 License
 
