@@ -96,11 +96,15 @@ Examples:
   - Italic text: `_italic text_`
   - Link: `[link text](https://example.com)`
   - Also a link: `<https://example.com>`
-  - Header (h1-h6): `# Header`
+  - Headers (h1-h6):
+
+    - `# Big Header`
+    - `###### Small Header`
 
   ```rust
   Content::builder()
-    .text("**Verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
+    .text("## Thank you for signing up")
+    .text("Please **verify your email** by [clicking here](https://example.com/confirm?token=XYZ)")
     .build()?;
   ```
 
@@ -110,13 +114,17 @@ Examples:
 
   ```rust
   Content::builder()
-    .link("Confirm Email", "https://example.com/confirm?token=XYZ")
+    .link("Confirm Email", "https://example.com/confirm?token=XYZ") // or...
+    .text("[Confirm Email](https://example.com/confirm?token=XYZ)")
     .build()?;
   ```
 
 ### Button
 
-  Button can also be used as a call to action. Button color can be controlled via your dashboard by setting the app's theme color.
+  Button can also be used as a call to action.
+
+  > **Note**
+  > Button color is set via your dashboard's app color.
 
   ```rust
   Content::builder()
@@ -128,17 +136,17 @@ Examples:
 
   Image component will link to an image within your email.
 
-> **Note**
-> Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
+  > **Note**
+  > Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
 
   ```rust
   Content::builder()
     .image(
-      "https://example.com/image.jpg",  // where the image is located
+      "https://example.com/image.jpg",  // where the image is hosted
       Some("https://example.com"),      // [optional] link url, if you want it to be clickable
       Some(200),                        // [optional] width
       Some(100),                        // [optional] height
-      Some("Alt text"),                 // [optional] alternative text
+      Some("Alt text"),                 // [optional] alternate text
     )
     .build()?;
   ```
@@ -147,8 +155,8 @@ Examples:
 
   **If you have "Image Optimization" turned on:**
 
-  1. Your images will be cached and distributed by our CDN for faster loading. The cache does not expire. If you'd like to purge cache, simply append a query parameter to the end of your image url.
-  1. Images will be automatically converted into formats that are widely supported by email clients. The following image formats will be processed:
+  1. Your images will be cached and distributed by our CDN for faster loading. The cache does not expire. If you'd like to re-cache, simply append a query parameter to the end of your image url.
+  1. Images will be converted into formats that are widely supported by email clients. The following image formats will be processed automatically:
 
       - Jpeg
       - Png
@@ -160,7 +168,7 @@ Examples:
       - Svg
 
   1. Maximum image size is 5MB for free accounts and 20MB for paid accounts.
-  1. You can specify `width` and/or `height` if you'd like (those parameters are optional). Keep in mind that images will be scaled down to fit with the email theme if they're too large.
+  1. You can specify `width` and/or `height` if you'd like (they are optional). Keep in mind that images will be scaled down to fit within the email theme, if they're too large.
 
 ### One-Time Password
 
@@ -175,7 +183,7 @@ Examples:
 
 ### Social Icons
 
-  Every theme comes with easily linkable social icons to connect with your company's profiles.
+  Every theme comes with easily linkable social icons to connect with your company's profiles. Usually, they're placed somewhere in the footer.
 
   These are all the supported platforms:
 
@@ -205,6 +213,8 @@ Examples:
 ### View in Browser
 
   If you'd like your recipients to be able to read the email in a browser, you can add the "view in browser" component that will automatically generate a link.
+
+  Usually, this is placed in the header or footer of the email.
 
   > **Note**
   > This will make the email public to anyone that has access to the link.
