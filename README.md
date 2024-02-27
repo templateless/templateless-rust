@@ -91,22 +91,22 @@ Examples:
 Components located in the header and footer sections will have their own styling (and usually smaller text). Example:
 
 ```rust
-  let header = Header::builder()
-    .text("Smaller text")
-    .build()?;
-  
-  let content = Content::builder()
-    .text("Normal text")
-    .build()?;
+let header = Header::builder()
+  .text("Smaller text")
+  .build()?;
+
+let content = Content::builder()
+  .text("Normal text")
+  .build()?;
 ```
 
 Currently there are 2 themes, `Theme::Unstyled` and `Theme::Simple`:
 
 ```rust
-  let content = Content::builder()
-    .theme(Theme::Simple)
-    .text("Hello world")
-    .build()?;
+let content = Content::builder()
+  .theme(Theme::Simple)
+  .text("Hello world")
+  .build()?;
 ```
 
 All of the following components can be mixed and matched to create dynamic emails:
@@ -169,11 +169,11 @@ Image component will link to an image within your email.
 ```rust
 Content::builder()
   .image(
-    "https://example.com/image.jpg",  // where the image is hosted
-    Some("https://example.com"),      // [optional] link url, if you want it to be clickable
-    Some(200),                        // [optional] width
-    Some(100),                        // [optional] height
-    Some("Alt text"),                 // [optional] alternate text
+    "https://placekitten.com/300/200",  // where the image is hosted
+    Some("https://example.com"),        // [optional] link url, if you want it to be clickable
+    Some(300),                          // [optional] width
+    Some(200),                          // [optional] height
+    Some("Alt text"),                   // [optional] alternate text
   )
   .build()?;
 ```
