@@ -79,7 +79,7 @@ async fn main() -> Result<()> {
 ```
 
 > [!NOTE]
-> 🚧 **This SDK is not stable yet.** The API might change as more features are added. Please pay attention to the [CHANGELOG](CHANGELOG.md) for breaking changes.
+> 🚧 **The SDK is not stable yet.** This API might change as more features are added. Please star and watch the repo so you can keep an eye on the [CHANGELOG](CHANGELOG.md).
 
 Examples:
 
