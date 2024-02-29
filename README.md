@@ -256,6 +256,8 @@ Content::builder()
 
 </details>
 
+---
+
 Components can be placed in the header, body and footer of the email. Header and footer styling is usually a bit different from the body (for example the text is smaller).
 
 ```rust
