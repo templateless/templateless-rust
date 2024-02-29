@@ -115,6 +115,22 @@ Text component allow you to insert a paragraph. Each paragraph supports basic ma
   - `# Big Header`
   - `###### Small Header`
 
+- Unordered list:
+
+  ```md
+  - item one
+  - item two
+  - item three
+  ```
+
+- Ordered list:
+
+  ```md
+  1. item one
+  1. item two
+  1. item three
+  ```
+
 ```rust
 Content::builder()
   .text("## Thank you for signing up")
