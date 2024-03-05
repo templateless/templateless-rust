@@ -1,7 +1,10 @@
 # CHANGELOG
 
-**Unreleased:**
-- `README.md`: markdown supports ordered/unordered lists
+**v0.1.0-alpha.7:**
+- `README.md`
+  - markdown supports ordered/unordered lists
+  - notice about test mode
+- Support for test mode logging
 
 **v0.1.0-alpha.6:**
 - `README.md` cleanup (listing of components)

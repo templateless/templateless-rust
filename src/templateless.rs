@@ -1,3 +1,4 @@
+use console::style;
 use dotenvy::dotenv;
 use reqwest::{
 	header::{AUTHORIZATION, REFERER},
@@ -11,8 +12,17 @@ use crate::{
 };
 
 #[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct EmailResponsePreview {
+	pub preview: String,
+	pub email: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct EmailResponse {
 	pub emails: Vec<ObjectId>,
+	pub previews: Option<Vec<EmailResponsePreview>>,
 }
 
 pub struct Templateless {
@@ -98,6 +108,23 @@ impl Templateless {
 
 				let ret: EmailResponse = serde_json::from_str(&response_text)
 					.map_err(|_| Error::Unknown)?;
+
+				if let Some(previews) = &ret.previews {
+					for preview in previews.iter() {
+						println!(
+							"{} {}: Emailed {}, preview: {}",
+							style("Templateless").bold(),
+							style("[TEST MODE]").bold().yellow(),
+							style(&preview.email).italic(),
+							style(format!(
+								"https://tmpl.sh/{}",
+								preview.preview
+							))
+							.bold()
+							.underlined(),
+						);
+					}
+				}
 
 				Ok(ret.emails)
 			}

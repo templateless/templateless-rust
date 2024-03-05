@@ -95,6 +95,21 @@ There are more Rust examples in the [examples](examples) folder ✨
 > [!NOTE]
 > 🚧 **The SDK is not stable yet.** This API might change as more features are added. Please watch the repo for the changes in the [CHANGELOG](CHANGELOG.md).
 
+## 🏗 Debugging
+
+You can generate test API keys by activating the **Test Mode** in your dashboard. By using these keys, you'll be able to view your fully rendered emails without actually sending them to the intended recipients.
+
+When you use a test API key in your SDK, the following output will appear in your logs when you try to send an email:
+
+```log
+Templateless [TEST MODE]: Emailed user@example.com, preview: https://tmpl.sh/ATMxHLX4r9aE
+```
+
+The preview link will display the email, but you must be logged in to Templateless to view it.
+
+> [!NOTE]
+> In test mode, the usual account email-sending limits are disabled.
+
 ## 🔳 Components
 
 Emails are crafted programmatically by making function calls. There's no dealing with HTML or drag-and-drop builders.

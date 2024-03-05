@@ -4,7 +4,7 @@ description = "Ship faster by sending elegant emails using just code"
 repository = "https://github.com/templateless/templateless-rust"
 documentation = "https://docs.rs/templateless"
 homepage = "https://templateless.com/"
-version = "0.1.0-alpha.6"
+version = "0.1.0-alpha.7"
 license = "MIT"
 edition = "2021"
 readme = "README.md"
@@ -19,6 +19,7 @@ tokio = { version = "1.36.0", features = ["full"] }
 erased-serde = "0.4.3"
 dotenvy = "0.15.7"
 exitcode = "1.1.2"
+console = "0.15.8"
 
 [[example]]
 name = "simple"
