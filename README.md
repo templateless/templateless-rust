@@ -258,7 +258,7 @@ If you'd like your recipients to be able to read the email in a browser, you can
 
 You can optionally provide the text for the link. If none is provided, default is used: "View in browser"
 
-**This will make the email public to anyone that has access to the link.**
+**Anyone who knows the link will be able to see the email.**
 
 ```rust
 Content::builder()
