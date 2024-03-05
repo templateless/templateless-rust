@@ -97,7 +97,7 @@ There are more Rust examples in the [examples](examples) folder ✨
 
 ## 🏗 Debugging
 
-You can generate test API keys by activating the **Test Mode** in your dashboard. By using these keys, you'll be able to view your fully rendered emails without actually sending them to the intended recipients.
+You can generate _test API keys_ by activating the **Test Mode** in your dashboard. By using these keys, you'll be able to view your fully rendered emails without actually sending them to the intended recipients.
 
 When you use a test API key in your SDK, the following output will appear in your logs when you try to send an email:
 
@@ -106,9 +106,6 @@ Templateless [TEST MODE]: Emailed user@example.com, preview: https://tmpl.sh/ATM
 ```
 
 The preview link will display the email, but you must be logged in to Templateless to view it.
-
-> [!NOTE]
-> In test mode, the usual account email-sending limits are disabled.
 
 ## 🔳 Components
 
