@@ -97,7 +97,7 @@ There are more Rust examples in the [examples](examples) folder ✨
 
 ## 🏗 Debugging
 
-You can generate _test API keys_ by activating the **Test Mode** in your dashboard. By using these keys, you'll be able to view your fully rendered emails without actually sending them to the intended recipients.
+You can generate _test API keys_ by activating the **Test Mode** in your dashboard. By using these keys, you'll be able to view your fully rendered emails without actually sending them.
 
 When you use a test API key in your SDK, the following output will appear in your logs when you try to send an email:
 
