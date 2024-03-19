@@ -1,5 +1,4 @@
 pub use collection::{Collection as Header, Collection as Footer};
-pub use components::{Service, SocialItem};
 pub use content::{Content, Theme};
 pub use email::Email;
 pub use email_address::EmailAddress;

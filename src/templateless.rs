@@ -42,7 +42,7 @@ impl Templateless {
 		Self { api_key: api_key.to_string(), domain }
 	}
 
-	pub fn domain(&mut self, domain: &str) -> &mut Self {
+	pub fn domain(mut self, domain: &str) -> Self {
 		self.domain = domain.to_string();
 		self
 	}

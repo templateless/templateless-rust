@@ -2,9 +2,10 @@ use serde::Serialize;
 
 use crate::{
 	components::{
-		Button, Component, Image, Link, Otp, Socials, Text, ViewInBrowser,
+		Button, Component, Image, Link, Otp, QrCode, Signature, SocialItem,
+		Socials, StoreBadgeItem, StoreBadges, Text, ViewInBrowser,
 	},
-	Footer, Header, Result, SocialItem,
+	Footer, Header, Result,
 };
 
 #[derive(Clone, Serialize)]
@@ -53,15 +54,8 @@ impl Content {
 		self.push(Box::new(Button::new(text, url)))
 	}
 
-	pub fn image(
-		self,
-		src: &str,
-		url: Option<String>,
-		width: Option<usize>,
-		height: Option<usize>,
-		alt: Option<String>,
-	) -> Self {
-		self.push(Box::new(Image::new(src, url, width, height, alt)))
+	pub fn image(self, src: &str) -> Self {
+		self.push(Box::new(Image::new(src)))
 	}
 
 	pub fn link(self, text: &str, url: &str) -> Self {
@@ -72,16 +66,35 @@ impl Content {
 		self.push(Box::new(Otp::new(text)))
 	}
 
-	pub fn socials(self, data: Vec<SocialItem>) -> Self {
-		self.push(Box::new(Socials::new(data)))
+	pub fn socials(self, data: &[SocialItem]) -> Self {
+		self.push(Box::new(Socials::new(data.to_vec())))
 	}
 
 	pub fn text(self, text: &str) -> Self {
 		self.push(Box::new(Text::new(text)))
 	}
 
-	pub fn view_in_browser(self, text: Option<String>) -> Self {
-		self.push(Box::new(ViewInBrowser::new(text)))
+	pub fn view_in_browser(self) -> Self {
+		self.push(Box::new(ViewInBrowser::new(None)))
+	}
+
+	pub fn qr_code(self, url: &str) -> Self {
+		self.push(Box::new(QrCode::url(url)))
+	}
+
+	pub fn store_badges(self, data: &[StoreBadgeItem]) -> Self {
+		self.push(Box::new(StoreBadges::new(data.to_vec())))
+	}
+
+	pub fn signature(self, text: &str) -> Self {
+		self.push(Box::new(Signature::new(text, None)))
+	}
+
+	pub fn component<T>(self, c: T) -> Self
+	where
+		T: Component + 'static,
+	{
+		self.push(Box::new(c))
 	}
 
 	pub fn build(&self) -> Result<Self> {

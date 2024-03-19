@@ -36,17 +36,22 @@ pub enum Service {
 	Threads,
 	#[serde(rename = "TELEGRAM")]
 	Telegram,
+	#[serde(rename = "MASTODON")]
+	Mastodon,
+	#[serde(rename = "RSS")]
+	Rss,
 }
 
 #[derive(Debug, Serialize, Clone, Hash, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
 pub struct Item {
-	service: Service,
+	key: Service,
 	value: String,
 }
 
 impl Item {
-	pub fn new(service: Service, value: &str) -> Self {
-		Self { service, value: value.to_string() }
+	pub fn new(key: Service, value: &str) -> Self {
+		Self { key, value: value.to_string() }
 	}
 }
 

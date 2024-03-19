@@ -5,7 +5,10 @@ pub use button::Button;
 pub use image::Image;
 pub use link::Link;
 pub use otp::Otp;
+pub use qr_code::QrCode;
+pub use signature::{Font as SignatureFont, Signature};
 pub use socials::{Item as SocialItem, Service, Socials};
+pub use store_badges::{Item as StoreBadgeItem, StoreBadge, StoreBadges};
 pub use text::Text;
 pub use view_in_browser::ViewInBrowser;
 
@@ -13,7 +16,10 @@ mod button;
 mod image;
 mod link;
 mod otp;
+mod qr_code;
+mod signature;
 mod socials;
+mod store_badges;
 mod text;
 mod view_in_browser;
 
@@ -30,6 +36,9 @@ pub enum ComponentId {
 	Socials,
 	Text,
 	ViewInBrowser,
+	QrCode,
+	StoreBadges,
+	Signature,
 }
 
 pub trait Component: ComponentClone + erased_serde::Serialize + Send {}

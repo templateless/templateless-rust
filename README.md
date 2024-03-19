@@ -157,8 +157,7 @@ Link component adds an anchor tag. This is the same as a text component with the
 
 ```rust
 Content::builder()
-  .link("Confirm Email", "https://example.com/confirm?token=XYZ") // or...
-  .text("[Confirm Email](https://example.com/confirm?token=XYZ)")
+  .link("Confirm Email", "https://example.com/confirm?token=XYZ")
   .build()?;
 ```
 
@@ -179,13 +178,20 @@ Content::builder()
 Image component will link to an image within your email. Keep in mind that a lot of email clients will prevent images from being loaded automatically for privacy reasons.
 
 ```rust
+// Simple
 Content::builder()
-  .image(
-    "https://placekitten.com/300/200",  // where the image is hosted
-    Some("https://example.com"),        // [optional] link url, if you want it to be clickable
-    Some(300),                          // [optional] width
-    Some(200),                          // [optional] height
-    Some("Alt text"),                   // [optional] alternate text
+  .image("https://placekitten.com/300/200")
+  .build()?;
+
+// Clickable & with attributes
+Content::builder()
+  .component(
+    Image::new("https://placekitten.com/300/200")
+      .url("https://example.com")
+      .width(200)
+      .height(100)
+      .alt("Alt Text")
+      .build()?
   )
   .build()?;
 ```
@@ -230,7 +236,7 @@ These are all the supported platforms:
 
 ```rust
 Content::builder()
-  .socials(vec![
+  .socials(&[
     SocialItem::new(Service::Website, "https://example.com"),
     SocialItem::new(Service::Email, "username@example.com"),
     SocialItem::new(Service::Phone, "123-456-7890"), // `tel:` link
@@ -247,6 +253,8 @@ Content::builder()
     SocialItem::new(Service::Snapchat, "Username"),
     SocialItem::new(Service::Threads, "Username"),
     SocialItem::new(Service::Telegram, "Username"),
+    SocialItem::new(Service::Mastodon, "@Username@example.com"),
+    SocialItem::new(Service::Rss, "https://example.com/blog"),
   ])
   .build()?;
 ```
@@ -262,9 +270,95 @@ You can optionally provide the text for the link. If none is provided, default i
 
 ```rust
 Content::builder()
-  .view_in_browser(Some("Read Email in Browser".to_string()))
+  .view_in_browser()
   .build()?;
 ```
+
+</details>
+<details><summary>Store Badges</summary>
+
+Link to your mobile apps via store badges:
+
+```rust
+Content::builder()
+  .store_badges(&[
+    StoreBadgeItem::new(StoreBadge::AppStore, "https://apps.apple.com/us/app/example/id1234567890"),
+    StoreBadgeItem::new(StoreBadge::GooglePlay, "https://play.google.com/store/apps/details?id=com.example"),
+    StoreBadgeItem::new(StoreBadge::MicrosoftStore, "https://apps.microsoft.com/detail/example"),
+  ])
+  .build()?;
+```
+
+</details>
+<details><summary>QR Code</summary>
+
+You can also generate QR codes on the fly. They will be shown as images inside the email.
+
+Here are all the supported data types:
+
+```rust
+// URL
+Content::builder()
+  .qr_code("https://example.com")
+  .build()?;
+
+// Email
+Content::builder()
+  .component(QrCode::email("user@example.com"))
+  .build()?;
+
+// Phone
+Content::builder()
+  .component(QrCode::phone("123-456-7890"))
+  .build()?;
+
+// SMS / Text message
+Content::builder()
+  .component(QrCode::sms("123-456-7890"))
+  .build()?;
+
+// Geo coordinates
+Content::builder()
+  .component(QrCode::coordinates(37.773972, -122.431297))
+  .build()?;
+
+// Crypto address (for now only Bitcoin and Ethereum are supported)
+Content::builder()
+  .component(QrCode::cryptocurrency_address(Cryptocurrency::Bitcoin, "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"))
+  .build()?;
+
+// You can also encode any binary data
+Content::builder()
+  .component(QrCode::new(&[1, 2, 3]))
+  .build()?;
+```
+
+</details>
+<details><summary>Signature</summary>
+
+Generated signatures can be added to your emails to give a bit of a personal touch. This will embed an image with your custom text using one of several available fonts:
+
+```rust
+// Signature with a default font
+Content::builder()
+  .signature("John Smith")
+  .build()?;
+
+// Signature with a custom font
+Content::builder()
+  .component(Signature::new("John Smith", Some(SignatureFont::ReenieBeanie)))
+  .build()?;
+```
+
+These are the available fonts:
+
+- `SignatureFont::ReenieBeanie` [preview →](https://fonts.google.com/specimen/Reenie+Beanie)
+- `SignatureFont::MeowScript` [preview →](https://fonts.google.com/specimen/Meow+Script)
+- `SignatureFont::Caveat` [preview →](https://fonts.google.com/specimen/Caveat)
+- `SignatureFont::Zeyada` [preview →](https://fonts.google.com/specimen/Zeyada)
+- `SignatureFont::Petemoss` [preview →](https://fonts.google.com/specimen/Petemoss)
+
+Signature should not exceed 64 characters. Only alphanumeric characters and most common symbols are allowed.
 
 </details>
 
@@ -273,11 +367,11 @@ Content::builder()
 Components can be placed in the header, body and footer of the email. Header and footer styling is usually a bit different from the body (for example the text is smaller).
 
 ```rust
-let header = Header::builder() // header of the email
+let header = Header::builder() // Header of the email
   .text("Smaller text")
   .build()?;
 
-let content = Content::builder() // body of the email
+let content = Content::builder() // Body of the email
   .text("Normal text")
   .build()?;
 ```

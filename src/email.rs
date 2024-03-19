@@ -29,12 +29,12 @@ impl Email {
 		}
 	}
 
-	pub fn to(&mut self, email_address: EmailAddress) -> &mut Self {
+	pub fn to(mut self, email_address: EmailAddress) -> Self {
 		self.to.insert(email_address);
 		self
 	}
 
-	pub fn to_many(&mut self, email_addresses: Vec<EmailAddress>) -> &mut Self {
+	pub fn to_many(mut self, email_addresses: Vec<EmailAddress>) -> Self {
 		for email_address in email_addresses.into_iter() {
 			self.to.insert(email_address);
 		}
@@ -42,17 +42,17 @@ impl Email {
 		self
 	}
 
-	pub fn subject(&mut self, subject: &str) -> &mut Self {
+	pub fn subject(mut self, subject: &str) -> Self {
 		self.subject = subject.to_string();
 		self
 	}
 
-	pub fn content(&mut self, content: Content) -> &mut Self {
+	pub fn content(mut self, content: Content) -> Self {
 		self.content = content;
 		self
 	}
 
-	pub fn delete_after(&mut self, seconds: u64) -> &mut Self {
+	pub fn delete_after(mut self, seconds: u64) -> Self {
 		self.options.delete_after = Some(seconds);
 		self
 	}

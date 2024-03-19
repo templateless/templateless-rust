@@ -3,6 +3,7 @@ use serde::Serialize;
 use crate::components::{Component, ComponentId};
 
 #[derive(Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Otp {
 	id: ComponentId,
 	text: String,
