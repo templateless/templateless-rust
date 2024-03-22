@@ -40,7 +40,7 @@ async fn main() -> Result<()> {
 
 	let email = Email::builder()
 		.to(EmailAddress::new(&email_address))
-		.subject("Confirm your email")
+		.subject("Thoughts on service?")
 		.content(content)
 		.build()?;
 
