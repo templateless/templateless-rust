@@ -82,7 +82,7 @@ async fn main() -> Result<()> {
         .content(content)
         .build()?;
 
-    let _result = Templateless::new("<YOUR_API_KEY>")
+    Templateless::new("<YOUR_API_KEY>")
         .send(email)
         .await?;
 
